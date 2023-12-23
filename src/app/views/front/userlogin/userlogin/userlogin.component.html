@@ -1,0 +1,37 @@
+<div class="main-parent">
+    <div class="form-wrap">
+      <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+        <h1><span>Tw</span>Sila</h1>
+        <div class="single-input">
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            autofocus
+            required
+            [(ngModel)]="email"  
+          />
+        </div>
+  
+        <div class="single-input">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+            required
+            [(ngModel)]="password"  
+          />
+          <!-- Display password length error message in red block -->
+        </div>
+  
+        <div class="submit-button">
+          <button class="button btn btn-primary d-grid w-100" type="submit">Se connecter</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

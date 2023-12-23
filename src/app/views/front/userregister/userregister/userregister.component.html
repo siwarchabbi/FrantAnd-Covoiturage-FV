@@ -1,0 +1,21 @@
+<div class="main-parent">
+    <div class="form-wrap">
+      <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+        <!-- Your registration form fields go here -->
+        <div class="single-input">
+          <input type="text" name="username" [(ngModel)]="username" placeholder="Enter your username" required />
+        </div>
+        <div class="single-input">
+          <input type="email" name="email" [(ngModel)]="email" placeholder="Enter your email" required />
+        </div>
+        <div class="single-input">
+          <input type="password" name="password" [(ngModel)]="password" placeholder="Enter your password" required />
+        </div>
+  
+        <div class="submit-button">
+          <button class="button btn btn-primary d-grid w-100" type="submit">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
