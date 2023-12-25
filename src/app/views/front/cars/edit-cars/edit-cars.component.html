@@ -1,0 +1,68 @@
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updatecars">
+  Update Car
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="updatecars" tabindex="-1" aria-labelledby="updatecarslabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="updatecarslabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form class="row g-3"   #f="ngForm" (ngSubmit)="editBook(f)" >
+          <div class="col-md-6">
+            <label for="image" class="form-label">Vehicle Image</label>
+            <input type="file" class="form-control" id="image" name="image" [(ngModel)]="car!.image">
+          </div>
+          <div class="col-md-6">
+            <label for="departuredatetime" class="form-label">Departure Date and Time</label>
+            <input type="datetime-local" class="form-control" id="departuredatetime" name="departuredatetime"   [(ngModel)]="car!.departureDateTime" required>
+          </div>
+          <div class="col-md-6">
+            <label for="localisation" class="form-label">Departure Location</label>
+            <input type="text" class="form-control" id="localisation" name="departureLocation" [(ngModel)]="car!.departureLocation" required>
+          </div>
+          <div class="col-12">
+            <label for="destination" class="form-label">Destination Location</label>
+            <input type="text" class="form-control" id="destination"  name="destinationLocation" [(ngModel)]="car!.destinationLocation" required>
+          </div>
+          <div class="col-12">
+            <label for="seatprice" class="form-label">Seat Price</label>
+            <input type="text" class="form-control" id="seatprice" name="seatprice" [(ngModel)]="car!.seatPrice" required>
+          </div>
+          <div class="col-md-6">
+            <label for="seatavailable" class="form-label">Available Seats</label>
+            <input type="text" class="form-control" id="seatavailable" name="seatavailable"  [(ngModel)]="car!.seatAvailable" required>
+          </div>
+          <div class="col-md-4">
+            <label for="model" class="form-label">Vehicle Model</label>
+            <input type="text" class="form-control" id="model" name="model"  [(ngModel)]="car!.model" required>
+          </div>
+          <div class="col-md-2">
+            <label for="matricule" class="form-label">Vehicle Registration Number</label>
+            <input type="text" class="form-control" id="matricule" name="matricule" maxlength="10" [(ngModel)]="car!.matricule" required>
+          </div>
+          <div class="col-md-2">
+            <label for="status" class="form-label">Carpool Status</label>
+            <select id="status" name="status" class="form-select" [(ngModel)]="car!.status" required>
+              <option selected>Choose</option>
+              <option>confirmed</option>
+              <option>pending</option>
+              <option>cancelled</option>
+            </select>
+          </div>
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary"  [disabled]="f.invalid" >Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

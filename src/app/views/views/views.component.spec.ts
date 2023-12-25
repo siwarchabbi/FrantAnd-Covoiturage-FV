@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserloginComponent } from './userlogin.component';
+import { ViewsComponent } from './views.component';
 
-describe('UserloginComponent', () => {
-  let component: UserloginComponent;
-  let fixture: ComponentFixture<UserloginComponent>;
+describe('ViewsComponent', () => {
+  let component: ViewsComponent;
+  let fixture: ComponentFixture<ViewsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserloginComponent ]
+      declarations: [ ViewsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UserloginComponent);
+    fixture = TestBed.createComponent(ViewsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -21,6 +21,3 @@ describe('UserloginComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-
-
