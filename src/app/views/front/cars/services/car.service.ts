@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class CarService {
   private Cars : Car[] = [];
 
-  private url = "http://localhost:5000/";
+  private url = "http://localhost:5000/api/car";
 
   options = {headers : new HttpHeaders(
     {
@@ -21,22 +21,30 @@ export class CarService {
   constructor(private httpClient : HttpClient) { }
 
   getCars():Observable<Car[]>{
-    return this.httpClient.get<Car[]>(this.url, this.options);
+    return this.httpClient.get<Car[]>( `${this.url}/`, this.options);
 
   }
 
   addCar(
-     image: String,
-     departureDateTime:Date,
-     departureLocation:String,
-     destinationLocation:String,
-     seatPrice:number,
-     seatAvailable:String,
-     model:String,
-     matricule:String,
-     status:String): Observable<Car>{
+    image: String,
+    departureDateTime: Date,
+    departureLocation: String,
+    destinationLocation: String,
+    seatPrice: number,
+    seatAvailable: String,
+    model: String,
+    matricule: String,
+    status: String
+  ): Observable<Car> {
+    const options = {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        Authorization: 'Bearer ' + window.localStorage.getItem('accessToken'),
+      }),
+    };
 
-    return this.httpClient.post<Car>(this.url,
+    return this.httpClient.post<Car>(
+      `${this.url}/`,
       {
         image,
         departureDateTime,
@@ -46,11 +54,12 @@ export class CarService {
         seatAvailable,
         model,
         matricule,
-        status
+        status,
       },
-      this.options
+      options
     );
   }
+
 
   getCarById(id : number): Observable<Car>{
 

@@ -1,3 +1,4 @@
+import { CarsModule } from './views/front/cars/cars.module';
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FrantlayoutsComponent } from './layouts/frantlayouts/frantlayouts.component';
@@ -7,7 +8,11 @@ const routes: Routes = [
   {path:'' , component : FrantlayoutsComponent ,children:[
     {path:'home' , loadChildren:()=>import('./views/front/home/home.module').then(m=>m.HomeModule) },
     {path:'loginuser' , loadChildren:()=>import('./views/front/userlogin/userlogin.module').then(m=>m.UserloginModule) },
-    {path:'registeruser' , loadChildren:()=>import('./views/front/userregister/userregister.module').then(m=>m.UserregisterModule) }
+    {path:'registeruser' , loadChildren:()=>import('./views/front/userregister/userregister.module').then(m=>m.UserregisterModule) },
+    {path: 'cars', loadChildren: () => import('./views/front/cars/cars.module').then(m => m.CarsModule)},
+    {
+      path : '', redirectTo : 'login', pathMatch : 'full'
+    }
 
 
   ]},

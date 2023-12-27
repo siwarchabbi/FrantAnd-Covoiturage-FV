@@ -1,8 +1,8 @@
 <app-searchcars (searchEvent)="searchCar($event)"></app-searchcars>
-
+<app-add-cars></app-add-cars>
 <div class="content-area recent-property" style="background-color: #FFF;">
-  <div class="container">   
-              <div class="section"> 
+  <div class="container">
+              <div class="section">
                   <div id="list-type" class="proerty-th-list">
                       <div class="col-md-4 p0">
                           <div class="box-two proerty-item" *ngFor="let car of filteredCars">
@@ -19,9 +19,9 @@
                                   <div class="property-icon">
                                       <img src="assets/img/icon/bed.png">{{car.seatAvailable}}|
                                       <img src="assets/img/icon/shawer.png">{{car.status}}|
-                                      <img src="assets/img/icon/cars.png">{{car.departureDateTime}}  
+                                      <img src="assets/img/icon/cars.png">{{car.departureDateTime}}
 
-                                      <div class="dealer-action pull-right">                                        
+                                      <div class="dealer-action pull-right">
                                         <button class="btn btn-primary" [routerLink]="['/books/edit', car.id]"> Edit</button>
                                           <a href="#" class="button delete_user_car">Delete</a>
                                           <button class="button delete_user_car" (click)="deleteCar(car.id)">Delete</button>
@@ -33,30 +33,14 @@
                               </div>
                           </div>
                       </div>
-                          
-                                                                              
+
+
                   </div>
               </div>
+          </div>
 
-              <div class="section"> 
-                  <div class="pull-right">
-                      <div class="pagination">
-                          <ul>
-                              <li><a href="#">Prev</a></li>
-                              <li><a href="#">1</a></li>
-                              <li><a href="#">2</a></li>
-                              <li><a href="#">3</a></li>
-                              <li><a href="#">4</a></li>
-                              <li><a href="#">Next</a></li>
-                          </ul>
-                      </div>
-                  </div>                
-              </div>
 
-          </div>       
 
-        
-           
     </div>
 
 

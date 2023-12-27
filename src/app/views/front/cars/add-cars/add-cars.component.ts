@@ -16,7 +16,8 @@ export class AddCarsComponent  {
     ) { }
 
 
-    addCar(f : NgForm){
+    addCars(f : NgForm){
+       console.log(f);
       this.service.addCar(
         f.value.image,
         f.value.departureDateTime,
@@ -27,11 +28,11 @@ export class AddCarsComponent  {
         f.value.model,
         f.value.matricule,
         f.value.status
-        ).subscribe(car=>this.router.navigate(['/cars']))
-        
-    
-      }
-      
+        ).subscribe(car=>this.router.navigate(['/cars/add']))
 
- 
+
+      }
+
+
+
 }

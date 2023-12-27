@@ -10,7 +10,7 @@ import { CarService } from '../services/car.service';
 })
 export class ListCarsComponent implements OnInit , OnDestroy {
 
-  cars : Car[] = []
+  cars: Car[] = [];
   filteredCars? : Car[];
   activeCar? : Car;
   subscription? : Subscription
@@ -28,7 +28,7 @@ export class ListCarsComponent implements OnInit , OnDestroy {
   }
 
   deleteCar(id : number){
-    if(confirm("Etes-vous sûre de vouloir supprimer le livre?"))
+    if(confirm("Are you sure you want to delete this car?"))
       this.service.deleteCar(id).subscribe(
         ()=> {
           this.cars = this.cars.filter(car=>car.id !== id);
