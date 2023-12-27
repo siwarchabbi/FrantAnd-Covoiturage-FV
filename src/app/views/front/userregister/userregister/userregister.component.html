@@ -1,21 +1,65 @@
-<div class="main-parent">
+
+  <div class="main-parent">
     <div class="form-wrap">
       <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
-        <!-- Your registration form fields go here -->
+        <h1><span>Tw</span>Sila</h1>
         <div class="single-input">
-          <input type="text" name="username" [(ngModel)]="username" placeholder="Enter your username" required />
+          <input
+            type="username"
+            class="form-control"
+            id="username"
+            name="username"
+            placeholder="Enter your Username"
+            autofocus
+            required
+            [(ngModel)]="username"  
+          />
         </div>
+
         <div class="single-input">
-          <input type="email" name="email" [(ngModel)]="email" placeholder="Enter your email" required />
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="Enter your Email"
+            autofocus
+            required
+            [(ngModel)]="email"
+            #emailInput="ngModel" 
+            pattern="[^@\s]+@[^@\s]+\.[^@\s]+" 
+          />
+       
+          
         </div>
+        
+  
         <div class="single-input">
-          <input type="password" name="password" [(ngModel)]="password" placeholder="Enter your password" required />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+            required
+            [(ngModel)]="password"  
+          />
+          <!-- Display password length error message in red block -->
         </div>
+        
   
         <div class="submit-button">
           <button class="button btn btn-primary d-grid w-100" type="submit">Register</button>
         </div>
+        <div class="center-div">
+          <h5>OR</h5>
+        </div>
+        <div class="center-div">
+          <a routerLink="/"><span>Login</span></a>
+      </div>
+      
       </form>
     </div>
   </div>
+  
   

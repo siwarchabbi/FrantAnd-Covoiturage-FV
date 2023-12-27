@@ -39,8 +39,7 @@ export class LoginService {
 
   
 
-  // get the user from session storage
   getToken(): string | null {
-    return window.sessionStorage.getItem(ID_KEY) !== null ? window.sessionStorage.getItem(ID_KEY) : null;
+    return localStorage.getItem('accessToken');
   }
 }
