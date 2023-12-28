@@ -1,9 +1,9 @@
-  <div class="input-group">
-    <div class="form-outline" data-mdb-input-init>
-      <input type="search" id="form1" class="form-control" value="" #search/>
-    </div>
-    <button type="button" class="btn btn-primary" (click)="sendSearchTerm(search.value)" data-mdb-ripple-init>
-      <i class="fa fa-search"></i>
-    </button>
-    
+
+    <div class="position-relative">
+      <span class=" search"><i class="fa fa-search" (click)="sendSearchTerm(search.value)"></i></span>
+      <input class="form-control w-100" placeholder="Search by order#, name..."   type="search" id="form1" class="form-control" value="" #search>
+
   </div>
+
+
+
