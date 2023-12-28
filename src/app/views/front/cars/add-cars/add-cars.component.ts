@@ -16,22 +16,28 @@ export class AddCarsComponent  {
     ) { }
 
 
-    addCars(f : NgForm){
-       console.log(f);
+    addCars(f: NgForm): void {
+      console.log('Form data:', f.value);
       this.service.addCar(
-        f.value.image,
-        f.value.departureDateTime,
-        f.value.departureLocation,
-        f.value.destinationLocation,
-        f.value.seatPrice,
-        f.value.seatAvailable,
-        f.value.model,
-        f.value.matricule,
-        f.value.status
-        ).subscribe(car=>this.router.navigate(['/cars/add']))
+          f.value.image,
+          f.value.departureDateTime,
+          f.value.departureLocation,
+          f.value.destinationLocation,
+          f.value.seatPrice,
+          f.value.seatAvailable,
+          f.value.model,
+          f.value.matricule,
+          f.value.status
+        ).subscribe(
+          car => {
+            console.log('Response from server:', car);
+            this.router.navigate(['/cars/list']);
+          },
+          error => console.error('Error from server:', error)
+        );
 
+    }
 
-      }
 
 
 

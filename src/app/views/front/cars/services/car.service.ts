@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../entity/car';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
-  private Cars : Car[] = [];
 
-  private url = "http://localhost:5000/api/car";
+  private url = 'http://localhost:5000/api/car';
+ 
 
   options = {headers : new HttpHeaders(
     {
@@ -57,6 +57,11 @@ export class CarService {
         status,
       },
       options
+    ).pipe(
+      catchError((error: any) => {
+        console.error(error);
+        throw error; // rethrow the error or handle it as needed
+      })
     );
   }
 

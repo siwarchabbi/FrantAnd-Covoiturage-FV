@@ -18,7 +18,7 @@ export class EditCarsComponent implements OnInit {
     private service : CarService,
     private router : Router){}
 
-  editBook(f : NgForm){
+  editCar(f : NgForm){
     this.service.editCar(this.car!).subscribe(
       car=>this.router.navigate(['/cars'])
     )
@@ -31,7 +31,7 @@ export class EditCarsComponent implements OnInit {
         this.service.getCarById(+params['id']).subscribe(
           car => this.car = car
         )
-       
+
       }
     )
   }
