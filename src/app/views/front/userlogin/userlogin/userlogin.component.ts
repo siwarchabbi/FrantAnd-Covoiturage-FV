@@ -13,7 +13,7 @@ export class UserloginComponent implements OnInit {
   password: string = '';
 
   constructor(private authService: LoginService, private router: Router) {}
-
+  
   ngOnInit(): void {
     // Initialization logic here
   }
@@ -29,7 +29,11 @@ export class UserloginComponent implements OnInit {
         (response) => {
           // Handle the login success logic
           console.log(response);
-          this.router.navigate(['/home']); // Navigate to the home page on success
+
+          // Save the accessToken to local storage
+          localStorage.setItem('accessToken', response.accessToken);
+
+          this.router.navigate(['/cars']); // Navigate to the home page on success
         },
         (error) => {
           // Handle the login failure logic

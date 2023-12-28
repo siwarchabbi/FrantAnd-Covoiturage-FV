@@ -11,6 +11,7 @@ export class UserregisterComponent implements OnInit {
   username: string = '';
   email: string = '';
   password: string = '';
+  
   constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {

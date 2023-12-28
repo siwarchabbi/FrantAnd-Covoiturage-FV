@@ -16,14 +16,13 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
     const token = this.authService.getToken();
-    
-    // Check if user is logged in
+
     if (!token) {
-      alert('Accès refusé!');
-      this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+      alert('Access denied!');
+      this.router.navigate(['/'], { queryParams: { returnUrl: state.url } });
       return false;
     }
-  
+
     return true;
   }
 }
