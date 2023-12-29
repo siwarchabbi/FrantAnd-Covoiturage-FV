@@ -1,55 +1,54 @@
-
 <app-add-cars></app-add-cars>
+<app-searchcars (searchEvent)="searchCar($event)"></app-searchcars>
 
-    <div class="container mt-12 px-2">
-
-      <div class="mb-2 d-flex justify-content-between align-items-center">
-
-        <app-searchcars (searchEvent)="searchCar($event)"></app-searchcars>
-
-
+<div class="site-section bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="section-heading"><strong>Car Listings</strong></h2>
       </div>
-      <div class="table-responsive">
-      <table class="table table-responsive table-borderless">
-
-        <thead>
-          <tr class="bg-light">
-            <th scope="col" width="5%"><input class="form-check-input" type="checkbox"></th>
-            <th scope="col" width="5%">#</th>
-            <th scope="col" width="20%">Image</th>
-            <th scope="col" width="20%">Depature Date & Time</th>
-            <th scope="col" width="20%">Departure Location</th>
-            <th scope="col" width="20%">Destination Location </th>
-            <th scope="col" width="20%">Seat Price </th>
-            <th scope="col" width="20%">Seat Available</th>
-            <th scope="col" width="20%">Model</th>
-            <th scope="col" width="20%">Matricule</th>
-            <th scope="col" width="10%">Status</th>
-            <th scope="col" width="20%">Operation </th>
-
-          </tr>
-        </thead>
-    <tbody>
-      <tr *ngFor="let car of filteredCars">
-        <th scope="row"><input class="form-check-input" type="checkbox"></th>
-        <td>{{car.id}}</td>
-        <td><img [src]="car.image" alt="Car Image"></td>
-        <td>{{car.departureDateTime}}</td>
-        <td>{{car.departureLocation}}</td>
-        <td>{{car.destinationLocation}}</td>
-        <td>{{car.seatPrice}}</td>
-        <td>{{car.seatAvailable}}</td>
-        <td>{{car.model}}</td>
-        <td>{{car.matricule}}</td>
-        <td>{{car.status}}</td>
-        <td><i class="material-icons" (click)="deleteCar(car.id)">Delete</i>
-
-      <app-edit-cars><button class="btn btn-primary" [routerLink]="['/cars/edit', car.id]"> Edit</button></app-edit-cars></td>
-
-      </tr>
-    </tbody>
-  </table>
-
     </div>
 
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card-deck">
+          <!-- Adjust the card structure based on your requirements -->
+          <div *ngFor="let car of filteredCars" class="card mb-4">
+            <img src="/assets/images/car_6.jpg" class="card-img-top" alt="Car Image">
+            <div class="card-body">
+              <h3 class="card-title">{{ car.model }}</h3>
+              <div class="rent-price">
+                <strong>{{ car.seatPrice }}DT</strong><span class="mx-1">/</span>Seat
+              </div>
+              <div class="d-block d-md-flex mb-3 border-bottom pb-3">
+                <div class="listing-feature pr-4">
+                  <span class="caption">Available Seat</span>
+                  <span class="number">{{ car.seatAvailable }}</span>
+                </div>
+                <div class="listing-feature pr-4">
+                  <span class="caption">Matricule</span>
+                  <span class="number">{{ car.matricule }}</span>
+                </div>
+                <div class="listing-feature pr-4">
+                  <span class="caption">Status</span>
+                  <span class="number">{{ car.status }}</span>
+                </div>
+              </div>
+
+              <div class="listing-feature pr-4">
+                <span>Departure Date & Time</span>
+                <span class="d-block font-weight-bold">{{ car.departureDateTime | date: 'MMM d, y' }}</span>
+                <small>{{ car.departureDateTime | date: 'h:mm a' }}</small>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-danger" (click)="car._id && deleteCar(car._id)">Delete</button>
+              <a [routerLink]="['/cars/edit', car._id]" class="btn btn-primary">Edit</a>
+            </div>
+          </div>
+          <!-- Repeat this card structure for each car -->
+        </div>
+      </div>
+    </div>
   </div>
+</div>

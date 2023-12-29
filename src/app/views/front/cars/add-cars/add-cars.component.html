@@ -13,10 +13,11 @@
       </div>
       <div class="modal-body">
 
-        <form class="row g-3"   #f="ngForm" (ngSubmit)="addCars(f)"  >
+        <form class="row g-3"   #f="ngForm" (ngSubmit)="addCars(f)" enctype="multipart/form-data" >
+
           <div class="col-md-12">
             <label for="image" class="form-label">Vehicle Image</label>
-            <input type="file"  class="form-control" id="image" name="image" ngModel #image="ngModel" required>
+            <input type="file"  class="form-control" id="image" name="image" accept="assets/images/cars/*" ngModel #image="ngModel" required>
           </div>
           <div class="col-md-12">
             <label for="departuredatetime" class="form-label">Departure Date and Time</label>
@@ -46,22 +47,22 @@
             <label for="status" class="form-label">Carpool Status</label>
             <select id="status" name="status" class="form-select" ngModel #status="ngModel" required>
               <option selected>Choose</option>
-              <option>confirmed</option>
-              <option>pending</option>
-              <option>cancelled</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="pending">Pending</option>
+              <option value="cancelled">Cancelled</option>
             </select>
           </div>
           <div class="col-md-12">
             <label for="matricule" class="form-label">Vehicle Registration Number</label>
             <input type="text" class="form-control" id="matricule" name="matricule" ngModel #matricule="ngModel" maxlength="10" required>
           </div>
-          <button type="submit" class="btn btn-success" [disabled]="f.invalid"  >Valider</button>
+          <button type="submit" class="btn btn-success" [disabled]="f.invalid"  >add</button>
         </form>
       </div>
       <div class="modal-footer">
-
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
+
