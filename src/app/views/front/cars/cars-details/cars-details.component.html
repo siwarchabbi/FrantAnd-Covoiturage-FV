@@ -57,30 +57,56 @@
 			
 			  
 			</div>
-            <hr>
-			<h3>Commentaires</h3>
-			<div *ngFor="let comment of comments" class="commentaire-container">
-				<div class="avatar-container">
-				  <img src="../../../../../assets/images1/R.jpg" alt="User Avatar">
-				</div>
-				<div class="commentaire-text">
-				  <h5 class="username">siwar</h5>
-				  <p>{{comment?.content}}</p> 
-				  <p>Date :{{comment?.datecreation}}</p>
-				  <tr>
-					
-				</tr>
-
-				
-				 
-				</div>
-				
-			  </div>
-			
-		
-			  
-		  </div>
-		  
+         
+            <div class="container my-5">
+                <div class="row">
+                  <div class="col-md-6 col-lg-8">
+                    <h3>Add a Comment</h3>
+                    <form (ngSubmit)="addComment()" #commentForm="ngForm">
+                      <div class="form-group">
+                        <label for="commentContent">Your Comment</label>
+                        <textarea
+                          id="commentContent"
+                          name="commentContent"
+                          [(ngModel)]="newComment.content"
+                          class="form-control"
+                          rows="4"
+                          required
+                        ></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit Comment</button>
+                    </form>
+                  </div>
+                </div>
+                <hr>
+                <h3>Commentaires</h3>
+                <div *ngFor="let comment of comments" class="commentaire-container">
+                  <div class="avatar-container">
+                    <img src="../../../../../assets/images1/R.jpg" alt="User Avatar">
+                  </div>
+                  <div class="commentaire-text">
+                    <h5 class="username">{{username}}</h5>
+                    <p>{{comment?.content}}</p>
+                    <p>Date: {{comment?.datecreation}}</p>
+              
+                    <!-- Show textarea only for the selected comment -->
+                    <div *ngIf="selectedComment && selectedComment._id === comment._id">
+                      <textarea
+                        id="updateCommentContent"
+                        name="updateCommentContent"
+                        [(ngModel)]="selectedComment.content"
+                        class="form-control"
+                        rows="4"
+                        required
+                      ></textarea>
+                      <button (click)="updateComment()">Update</button>
+                    </div>
+              
+                    <button (click)="selectCommentForUpdate(comment._id!)">Edit</button>
+                    <button (click)="deleteComment(comment?._id)">Delete</button>
+                  </div>
+                </div>
+              </div>
 
 
 

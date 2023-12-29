@@ -27,6 +27,21 @@ export class CarService {
     const url = `${this.url}/api/comments/${carId}`;
     return this.httpClient.get<Comment[]>(url);
   }
+
+  addComment(comment: Comment): Observable<Comment> {
+    const url = `${this.url}/api/comments/${comment.car}`;
+    return this.httpClient.post<Comment>(url, comment);
+  }
+
+  updateComment(comment: Comment): Observable<Comment> {
+    const url = `${this.url}/api/comments/${comment._id}`;
+    return this.httpClient.put<Comment>(url, comment, this.options);
+  }
+
+  deleteComment(commentId: string): Observable<void> {
+    const url = `${this.url}/api/comments/${commentId}`;
+    return this.httpClient.delete<void>(url, this.options);
+  }
   
 
   getCars(): Observable<Car[]> {
