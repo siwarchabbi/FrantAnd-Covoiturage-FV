@@ -18,9 +18,19 @@ export class ListCarsComponent implements OnInit, OnDestroy {
 
   constructor(private service: CarService) { }
 
-  searchCar(search: string) {
+  searchCarModel(search: string) {
     this.filteredCars = this.cars.filter(
       car => car.model.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+  searchCardepature(search: string) {
+    this.filteredCars = this.cars.filter(
+      car => car.departureLocation.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+  searchCardestination(search: string) {
+    this.filteredCars = this.cars.filter(
+      car => car.destinationLocation.toLowerCase().includes(search.toLowerCase())
     );
   }
 

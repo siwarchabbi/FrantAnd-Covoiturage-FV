@@ -1,7 +1,5 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#addCars">
-  New Car
-</button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="addCars" tabindex="-1" aria-labelledby="addCarslabel" aria-hidden="true">
@@ -17,7 +15,7 @@
 
           <div class="col-md-12">
             <label for="image" class="form-label">Vehicle Image</label>
-            <input type="file"  class="form-control" id="image" name="image" accept="assets/images/cars/*" ngModel #image="ngModel" required>
+            <input type="file"   class="form-control" id="image" name="image"  (change)="onFileChange($event)"accept="images/*" ngModel #image="ngModel" required>
           </div>
           <div class="col-md-12">
             <label for="departuredatetime" class="form-label">Departure Date and Time</label>
