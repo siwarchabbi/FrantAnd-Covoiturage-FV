@@ -1,1 +1,88 @@
 
+
+<div class="site-section bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+          <h2 class="section-heading"><strong>Car Listings</strong></h2>
+         
+          <app-add-cars></app-add-cars>
+          <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+      <br>
+       <div class="row">
+        <div class="col-md-6 col-lg-4 mb-4" *ngIf="car" >
+          <div class="listing d-block  align-items-stretch">
+            <div class="listing-img h-100 mr-4">
+              <img src="assets/images/car_6.jpg" alt="Image" class="img-fluid">
+            </div>
+            <div class="listing-contents h-100">
+              <h3>{{car.model}} </h3>
+              <div class="rent-price">
+                <strong>{{car.seatPrice}} DT </strong><span class="mx-1">/</span>Seat
+              </div>
+              <div class="d-block d-md-flex mb-3 border-bottom pb-3">
+                <div class="listing-feature pr-4">
+                  <span class="caption">Available seat :</span>
+                  <span class="number">{{car.seatAvailable}}</span>
+                </div>
+                <div class="listing-feature pr-4">
+                  <span class="caption">Matricule :</span>
+                  <span class="number">{{car.matricule}}</span>
+                </div>
+                <div class="listing-feature pr-4">
+                  <span class="caption">Status :</span>
+                  <span class="number">{{car.status}}</span>
+                </div>
+              </div>
+            
+
+           
+              <div>
+                <span class="caption">Departure Date & Time :</span>
+                <p> <span class="d-block font-weight-bold">{{ car.departureDateTime | date: 'MMM d, y' }}</span>
+                  <small>{{ car.departureDateTime | date: 'h:mm a' }}</small></p>
+
+
+              </div>
+           
+            </div>
+
+          </div>
+          
+        </div>
+        <div class="container my-5" >
+			<div class="row">
+			
+			
+			  
+			</div>
+            <hr>
+			<h3>Commentaires</h3>
+			<div *ngFor="let comment of comments" class="commentaire-container">
+				<div class="avatar-container">
+				  <img src="../../../../../assets/images1/R.jpg" alt="User Avatar">
+				</div>
+				<div class="commentaire-text">
+				  <h5 class="username">siwar</h5>
+				  <p>{{comment?.content}}</p> 
+				  <p>Date :{{comment?.datecreation}}</p>
+				  <tr>
+					
+				</tr>
+
+				
+				 
+				</div>
+				
+			  </div>
+			
+		
+			  
+		  </div>
+		  
+
+
+
+
+

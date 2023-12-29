@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError } from 'rxjs';
 import { Car } from '../entity/car';
+import { Comment } from '../entity/Comment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +20,14 @@ export class CarService {
   };
 
   constructor(private httpClient: HttpClient) { }
+
+
+
+  getCommentsByCarId(carId: string): Observable<Comment[]> {
+    const url = `${this.url}/api/comments/${carId}`;
+    return this.httpClient.get<Comment[]>(url);
+  }
+  
 
   getCars(): Observable<Car[]> {
     return this.httpClient.get<Car[]>(`${this.url}/`, this.options);

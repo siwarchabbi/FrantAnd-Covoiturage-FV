@@ -45,6 +45,8 @@
 
                   <button type="submit" class="btn btn-danger" (click)="car._id && deleteCar(car._id)">Delete</button>
                   <a class="btn btn-primary btn-sm" [routerLink]="['/cars/edit', car._id]" class="btn btn-primary">Edit</a>
+                  <a class="btn btn-primary btn-sm" [routerLink]="['/cars/details', car._id]" class="btn btn-primary">Detail</a>
+
                 </div>
               </div>
 

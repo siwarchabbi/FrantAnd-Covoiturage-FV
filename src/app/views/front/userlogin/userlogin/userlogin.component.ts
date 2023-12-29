@@ -32,6 +32,9 @@ export class UserloginComponent implements OnInit {
 
           // Save the accessToken to local storage
           localStorage.setItem('accessToken', response.accessToken);
+          localStorage.setItem('username', response.user.username);
+          localStorage.setItem('email', response.user.email);
+          localStorage.setItem('id', response.user.id);
 
           this.router.navigate(['/home']); // Navigate to the home page on success
         },
