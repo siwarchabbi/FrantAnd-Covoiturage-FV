@@ -6,6 +6,7 @@ import { CarService } from '../services/car.service';
 import { Car } from '../entity/car';
 import { Comment } from '../entity/Comment';
 
+
 @Component({
   selector: 'app-cars-details',
   templateUrl: './cars-details.component.html',
@@ -110,6 +111,7 @@ export class CarsDetailsComponent implements OnInit, OnDestroy {
         },
         (error) => {
           console.error('Error updating comment:', error);
+
         }
       );
     }

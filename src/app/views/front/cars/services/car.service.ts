@@ -51,11 +51,21 @@ export class CarService {
   addCar(car: Car): Observable<Car> {
     return this.httpClient.post<Car>(`${this.url}/`, car, this.options).pipe(
       catchError((error: any) => {
-        console.error(error);
-        throw error; // rethrow the error or handle it as needed
+        console.error('Error adding car:', error);
+        throw error; // Rethrow the error or handle it as needed
       })
     );
   }
+  createCar(carData: any, image: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('image', image);
+    Object.keys(carData).forEach((key) => {
+      formData.append(key, carData[key]);
+    });
+
+    return this.httpClient.post<any>(`${this.url}`, formData);
+  }
+
 
   getCarById(id: string): Observable<Car> {
     return this.httpClient.get<Car>(`${this.url}/${id}`);

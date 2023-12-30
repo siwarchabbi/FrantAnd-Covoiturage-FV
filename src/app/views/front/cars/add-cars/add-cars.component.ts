@@ -2,39 +2,54 @@ import { Component } from '@angular/core';
 import { CarService } from '../services/car.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { Car } from '../entity/car';
 
 @Component({
   selector: 'app-add-cars',
   templateUrl: './add-cars.component.html',
-  styleUrls: ['./add-cars.component.css']
+  styleUrls: ['./add-cars.component.css'],
 })
 export class AddCarsComponent {
-
-  constructor(
-    private service: CarService,
-    private router: Router
-  ) { }
+  userId: string | null = null;
   selectedFile: File | null = null;
-  
-  onFileChange(event: any): void {
-    
-    const files: FileList = event.target.files;
-    if (files.length > 0) {
-      this.selectedFile = files[0];
-    }
+  car: Car = new Car('', '', new Date(), '', 0, '', '', '', 'pending', '');
+
+  constructor(private service: CarService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.userId = localStorage.getItem('id');
   }
-  addCars(f: NgForm): void {
-    console.log('Form data:', f.value);
-    this.service.addCar(f.value).subscribe(
-      car => {
-        console.log('Response from server:', car);
-        this.router.navigate(['/cars/list']).then(() => {
-          this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-          this.router.onSameUrlNavigation = 'reload';
-          this.router.navigate(['/cars/list']);
-        });
+
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
+  }
+
+  createCar(form: NgForm): void {
+    if (form.invalid || !this.selectedFile) {
+      return;
+    }
+
+    const carData = {
+      user: this.userId,
+      destinationLocation: form.value.destinationLocation,
+      departureDateTime: form.value.departureDateTime,
+      departureLocation: form.value.departureLocation,
+      seatPrice: form.value.seatPrice,
+      seatAvailable: form.value.seatAvailable,
+      model: form.value.model,
+      matricule: form.value.matricule,
+      status: form.value.status,
+      imageName: this.selectedFile.name,
+    };
+
+    this.service.createCar(carData, this.selectedFile).subscribe(
+      (response) => {
+        console.log('Car created successfully:', response);
+        form.resetForm();
       },
-      error => console.error('Error from server:', error)
+      (error) => {
+        console.error('Error creating car:', error);
+      }
     );
   }
 }
