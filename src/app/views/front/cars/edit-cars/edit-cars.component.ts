@@ -11,7 +11,8 @@ import { NgForm } from '@angular/forms';
 })
 export class EditCarsComponent implements OnInit {
 
-  car: Car = new Car( '', new Date(), '', '', 0, '', '', '', ''); // Adjust the default date as needed
+  car: Car = new Car('', '', new Date(), '', 0, '', '', '', 'pending', '');
+
 
   constructor(
     private activatedRoute: ActivatedRoute,

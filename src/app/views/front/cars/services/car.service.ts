@@ -26,8 +26,8 @@ export class CarService {
   addCar(car: Car): Observable<Car> {
     return this.httpClient.post<Car>(`${this.url}/`, car, this.options).pipe(
       catchError((error: any) => {
-        console.error(error);
-        throw error; // rethrow the error or handle it as needed
+        console.error('Error adding car:', error);
+        throw error; // Rethrow the error or handle it as needed
       })
     );
   }

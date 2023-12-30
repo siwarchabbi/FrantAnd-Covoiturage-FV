@@ -1,1 +1,40 @@
 
+<div *ngIf="car">
+  <h2>{{ car.model }} Details</h2>
+  <div>
+    <label>Departure Date & Time:</label>
+    <p>{{ car.departureDateTime | date: 'MMM d, y h:mm a' }}</p>
+  </div>
+  <div>
+    <label>Departure Location:</label>
+    <p>{{ car.departureLocation }}</p>
+  </div>
+  <div>
+    <label>Destination Location:</label>
+    <p>{{ car.destinationLocation }}</p>
+  </div>
+  <div>
+    <label>Matricule:</label>
+    <p>{{ car.matricule }}</p>
+  </div>
+  <div>
+    <label>Model:</label>
+    <p>{{ car.model }}</p>
+  </div>
+  <div>
+    <label>Seat Available:</label>
+    <p>{{ car.seatAvailable }}</p>
+  </div>
+  <div>
+    <label>Seat Price:</label>
+    <p>{{ car.seatPrice }} DT</p>
+  </div>
+  <div>
+    <label>Status:</label>
+    <p>{{ car.status }}</p>
+  </div>
+  <div>
+    <label>Car Image:</label>
+    <img [src]="'http://localhost:5000/uploads/' + car.image" alt="Car Image">
+  </div>
+</div>

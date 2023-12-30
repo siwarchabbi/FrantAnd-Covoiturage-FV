@@ -17,7 +17,8 @@
           <div class="col-md-6 col-lg-4 mb-4" *ngFor="let car of filteredCars">
             <div class="listing d-block  align-items-stretch">
               <div class="listing-img h-100 mr-4">
-                <img src="assets/images/car_6.jpg" alt="Image" class="img-fluid">
+                <a [routerLink]="['/cars/details', car._id]">
+                  <img [src]="'http://localhost:5000/uploads/' + car.image" alt="Car Image"></a>
               </div>
               <div class="listing-contents h-100">
                 <h3>{{car.model}} </h3>
