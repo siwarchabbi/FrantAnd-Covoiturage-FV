@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { LayoutsModule } from './layouts/layouts.module';
 import { FormsModule } from '@angular/forms';
 import { ViewsComponent } from './views/views/views.component';
+import { ProfileRoutingModule } from './views/front/profile/profile-routing.module';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ViewsComponent
+    ViewsComponent,
+
+
 
   ],
   imports: [
@@ -19,7 +23,9 @@ import { ViewsComponent } from './views/views/views.component';
     AppRoutingModule,
     LayoutsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ProfileRoutingModule,
+
 
   ],
   providers: [],

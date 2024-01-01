@@ -46,6 +46,7 @@ export class AddCarsComponent {
       (response) => {
         console.log('Car created successfully:', response);
         form.resetForm();
+        this.router.navigate(['/cars/list']);
       },
       (error) => {
         console.error('Error creating car:', error);

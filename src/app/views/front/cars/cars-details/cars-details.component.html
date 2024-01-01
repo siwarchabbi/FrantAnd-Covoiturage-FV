@@ -14,7 +14,7 @@
         <div class="col-md-6 col-lg-4 mb-4" *ngIf="car" >
           <div class="listing d-block  align-items-stretch">
             <div class="listing-img h-100 mr-4">
-              <img src="assets/images/car_6.jpg" alt="Image" class="img-fluid">
+              <img [src]="'http://localhost:5000/uploads/' + car.image"  alt="Image" class="img-fluid">
             </div>
             <div class="listing-contents h-100">
               <h3>{{car.model}} </h3>
