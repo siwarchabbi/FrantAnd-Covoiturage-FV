@@ -16,9 +16,6 @@ import { NavbarComponent } from './views/front/navbar/navbar.component';
     AppComponent,
     ViewsComponent,
     NavbarComponent,
-
-
-
   ],
   imports: [
     BrowserModule,
