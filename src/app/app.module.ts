@@ -5,23 +5,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutsModule } from './layouts/layouts.module';
 import { FormsModule } from '@angular/forms';
-import { NavbarComponent } from './views/navbar/navbar.component';
-
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-   NavbarComponent
+    AppComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LayoutsModule,
     HttpClientModule,
-    FormsModule,
-    ProfileRoutingModule,
-
+    FormsModule
 
   ],
   providers: [],
