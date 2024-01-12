@@ -47,7 +47,7 @@
 
             <div class="col-3">
               <div class="site-logo">
-                <a href="index.html"><strong>TwSSila</strong></a>
+                <a href="index.html"><strong>TawSila</strong></a>
               </div>
             </div>
 
@@ -58,9 +58,10 @@
               <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
                 <ul class="site-menu main-menu js-clone-nav ml-auto ">
                   <li class="active"><a href="home" class="nav-link">Home</a></li>
-                  <li><a href="testimonials.html" class="nav-link">Favoris</a></li>
-                  <li><a href="listing.html" class="nav-link">Profile</a></li>
+                  <li><a  [routerLink]="['/cars/list'] "  class="nav-link">Cars</a></li>
 
+                  <li><a [routerLink]="['/favorie']"  class="nav-link">Favoris</a></li>
+                  <li><a [routerLink]="['/profile/getprofile', userId]"  class="nav-link">Profile</a></li>
                 
                 </ul>
               </nav>
@@ -227,7 +228,7 @@
               <div class="border-top pt-5">
                 <p>
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+              Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >TawSsila</a>
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
               </p>
               </div>
