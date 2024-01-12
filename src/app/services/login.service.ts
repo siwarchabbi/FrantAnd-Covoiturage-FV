@@ -8,8 +8,8 @@ const ID_KEY = 'auth-id';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:5000/api/users/login'; 
-  private apiUrl2 = 'http://localhost:5000/api/users'; 
+  private apiUrl = 'http://localhost:5000/api/users/login';
+  private apiUrl2 = 'http://localhost:5000/api/users';
 
 
   private userData: any;
@@ -35,11 +35,19 @@ export class LoginService {
     const body = { username, email, password };
     return this.http.post(`${this.apiUrl2}/register`, body);
   }
- 
 
-  
+
 
   getToken(): string | null {
     return localStorage.getItem('accessToken');
   }
+
+  getUserProfile(userId: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl2}/profile/${userId}`);
+  }
+
+  updateUserProfile(userId: string, updateData: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl2}/update/${userId}`, updateData);
+  }
+
 }

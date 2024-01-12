@@ -8,10 +8,10 @@ import { AuthGuard } from 'src/app/guards/auth.guard';
 
 
 const routes: Routes = [
-  {path:'details/:id', component : CarsDetailsComponent },
-  {path:'add', component : AddCarsComponent },
-  {path:'edit/:id', component: EditCarsComponent},
-  {path:'list', component: ListCarsComponent },
+  {path:'details/:id', component : CarsDetailsComponent ,canActivate: [AuthGuard] },
+  {path:'add', component : AddCarsComponent ,canActivate: [AuthGuard] },
+  {path:'edit/:id', component: EditCarsComponent,canActivate: [AuthGuard] },
+  {path:'list', component: ListCarsComponent ,canActivate: [AuthGuard] },
   {path:'', redirectTo:'list', pathMatch:'full'}
 ];
 
