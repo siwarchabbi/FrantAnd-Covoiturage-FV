@@ -1,9 +1,26 @@
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+    <div class="col-lg-10">
+      <form class="trip-form" >
+        <div class="row align-items-center">
+          <div class="mb-3 mb-md-0 col-md-3">
+            <div class="form-control-wrap">
+              <input type="text" id="cf-1" placeholder="Departure Location" class="form-control px-3"  [(ngModel)]="departureLocation" name="departureLocation">
+              <span class="icon icon-location_city"></span>
+            </div>
+          </div>
+          <div class="mb-3 mb-md-0 col-md-3">
+            <div class="form-control-wrap">
+              <input type="text" id="cf-2" placeholder="Destination Location" class="form-control px-3"  [(ngModel)]="destinationLocation"  name="destinationLocation">
+              <span class="icon icon-location_city"></span>
+            </div>
+          </div>
 
-    <div class="position-relative">
-      <span class=" search"><i class="fa fa-search" (click)="sendSearchTerm(search.value)"></i></span>
-      <input class="form-control w-100" placeholder="Search by order#, name..."   type="search" id="form1" class="form-control" value="" #search>
-
+          <div class="mb-3 mb-md-0 col-md-3">
+            <button (click)="searchCars()" class="btn btn-primary btn-block py-3">Search Now</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
-
-
-
+</div>

@@ -1,17 +1,5 @@
 
 
-
-
-
-
-
-
-
-
-
-
-
-
               <!doctype html>
 <html lang="en">
 
@@ -62,7 +50,7 @@
 
                   <li><a [routerLink]="['/favoris']"  class="nav-link">Favoris</a></li>
                   <li><a [routerLink]="['/profile/getprofile', userId]"  class="nav-link">Profile</a></li>
-                
+
                 </ul>
               </nav>
             </div>
@@ -78,9 +66,9 @@
 
       <div class="site-section">
         <div class="container">
-       
 
-        
+
+
         </div>
       </div>
 
@@ -113,17 +101,17 @@
                     <span class="number">{{car.status}}</span>
                   </div>
                 </div>
-              
-    
-             
+
+
+
                 <div>
                   <span class="caption">Departure Date & Time :</span>
                   <p> <span class="d-block font-weight-bold">{{ car.departureDateTime | date: 'MMM d, y' }}</span>
                     <small>{{ car.departureDateTime | date: 'h:mm a' }}</small></p>
-    
-    
+
+
                 </div>
-             
+
               </div>
             </div>
           </div>
@@ -166,7 +154,7 @@
                   <h5 class="username">{{comment.user.username}}</h5>
                   <p>{{comment?.content}}</p>
                   <p>Date: {{comment?.datecreation}}</p>
-            
+
                   <!-- Show textarea only for the selected comment -->
                   <div *ngIf="selectedComment && selectedComment._id === comment._id">
                     <textarea
@@ -194,8 +182,8 @@
 
 </div>
 
-                  
-                  
+
+
                 </div>
               </div>
             </div>
@@ -210,18 +198,18 @@
       </div>
     </div>
 
- 
 
-  
 
-  
+
+
+
 
 
       <footer class="site-footer">
         <div class="container">
           <div class="row">
-           
-          
+
+
           </div>
           <div class="row pt-5 mt-5 text-center">
             <div class="col-md-12">
@@ -251,7 +239,7 @@
 
 
 
-              
+
 
 
 

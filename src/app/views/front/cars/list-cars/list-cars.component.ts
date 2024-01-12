@@ -22,21 +22,18 @@ export class ListCarsComponent implements OnInit, OnDestroy {
 
   constructor(private service: CarService ) { }
 
-  searchCarModel(search: string) {
+
+
+  searchCars(searchData: { departure: string, destination: string }) {
+    
+    const { departure, destination } = searchData;
     this.filteredCars = this.cars.filter(
-      car => car.model.toLowerCase().includes(search.toLowerCase())
+      car => car.departureLocation.toLowerCase().includes(departure.toLowerCase()) &&
+      car.destinationLocation.toLowerCase().includes(destination.toLowerCase())
     );
   }
-  searchCardepature(search: string) {
-    this.filteredCars = this.cars.filter(
-      car => car.departureLocation.toLowerCase().includes(search.toLowerCase())
-    );
-  }
-  searchCardestination(search: string) {
-    this.filteredCars = this.cars.filter(
-      car => car.destinationLocation.toLowerCase().includes(search.toLowerCase())
-    );
-  }
+
+
 
 
   deleteCar(id: string) {
@@ -71,13 +68,13 @@ export class ListCarsComponent implements OnInit, OnDestroy {
         this.service.addCarToFavorites(this.userId, carId).subscribe(
           () => {
             console.log('Car added to favorites successfully.');
-  
+
             Swal.fire({
               icon: 'success',
               title: 'Success',
               text: 'Car added to favorites successfully!',
             });
-  
+
           },
           (error) => {
             console.error('Error adding car to favorites:', error);
@@ -95,9 +92,9 @@ export class ListCarsComponent implements OnInit, OnDestroy {
       console.error('User ID is null. Unable to add car to favorites.');
     }
   }
-  
-  
-  
+
+
+
 
   fetchCars() {
     this.subscription = this.service.getCars().subscribe(
