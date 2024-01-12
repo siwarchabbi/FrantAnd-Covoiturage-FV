@@ -11,6 +11,8 @@ import { Comment } from '../entity/Comment';
 export class CarService {
 
   private url = 'http://localhost:5000/api/car';
+  private apiUrl = 'http://localhost:5000/api/favorie';
+
 
   private options = {
     headers: new HttpHeaders({
@@ -21,7 +23,10 @@ export class CarService {
 
   constructor(private httpClient: HttpClient) { }
 
-
+  addCarToFavorites(userId: string, carId: string): Observable<any> {
+    const url = `${this.apiUrl}/${userId}/${carId}`;
+    return this.httpClient.post(url, {});
+  }
 
   getCommentsByCarId(carId: string): Observable<Comment[]> {
     const url = `${this.url}/api/comments/${carId}`;
