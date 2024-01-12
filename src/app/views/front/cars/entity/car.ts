@@ -9,7 +9,8 @@ export class Car {
   model: string;
   matricule: string;
   status: 'confirmed' | 'cancelled' | 'pending';
-  image: string; 
+  image: string;
+
   constructor(
     user: string,
     destinationLocation: string,
@@ -20,7 +21,8 @@ export class Car {
     model: string,
     matricule: string,
     status: 'confirmed' | 'cancelled' | 'pending',
-    image: string 
+    image: string,
+
   ) {
     this.user = user;
     this.destinationLocation = destinationLocation;
@@ -31,6 +33,8 @@ export class Car {
     this.model = model;
     this.matricule = matricule;
     this.status = status;
-    this.image = image; 
+    this.image = image;
+
+
   }
 }
