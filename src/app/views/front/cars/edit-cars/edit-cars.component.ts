@@ -1,6 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CarService } from '../services/car.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -19,7 +20,6 @@ export class EditCarsComponent  implements OnInit {
   ) {}
 
   ngOnInit() {
-    // Get carId from route parameters
     this.route.params.subscribe((params) => {
       this.carId = params['id'];
       this.getCarDetails();
@@ -33,21 +33,36 @@ export class EditCarsComponent  implements OnInit {
   }
 
   onImageChange(event: any) {
-    // Handle image file change event
     this.imageFile = event.target.files[0];
   }
 
-  updateCar() {
-    this.carService.updateCar(this.carId, this.carData, this.imageFile).subscribe(
-      (data) => {
-        // Handle success, e.g., show a success message, navigate to car list, etc.
-        console.log('Car updated successfully:', data);
-        this.router.navigate(['/cars']); // Redirect to car list page
-      },
-      (error) => {
-        // Handle error, e.g., show an error message
-        console.error('Error updating car:', error);
-      }
-    );
-  }
+
+
+updateCar() {
+  this.carService.updateCar(this.carId, this.carData, this.imageFile).subscribe(
+    (data) => {
+      // Handle success
+      console.log('Car updated successfully:', data);
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Car updated successfully!',
+      });
+
+      this.router.navigate(['/cars']); // Redirect to car list page
+    },
+    (error) => {
+      // Handle error
+      console.error('Error updating car:', error);
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Failed to update car. Please try again.',
+      });
+    }
+  );
+}
+
 }

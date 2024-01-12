@@ -1,4 +1,7 @@
-<app-navbar></app-navbar>
-<div><router-outlet></router-outlet></div>
 
+<div *ngIf="!(currentRoute.includes('/login') || currentRoute.includes('/registeruser'))">
+  <app-navbar></app-navbar>
+</div>
+
+<router-outlet></router-outlet>
 

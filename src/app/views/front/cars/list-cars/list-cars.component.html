@@ -7,11 +7,14 @@
 
             <div class="text-lg-end">
               <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#addCars">
-                New Car
+                <i class="fas fa-plus-circle fa-lg"></i>   New Car
               </button>
               </div>
               <br>
               <br>
+              <a style="color: #28a745;" href="#!" role="button">
+
+              </a>
             <app-add-cars></app-add-cars>
 
         </div>
@@ -22,8 +25,6 @@
       <br>
       <br>
 </div>
-
-
 
         <br>
          <div class="row">
@@ -67,13 +68,24 @@
                       <p> <span class="d-block font-weight-bold">{{ car.destinationLocation}}</span></p>
                     </div>
                     </div>
-                  <button type="submit" class="btn btn-danger" (click)="car._id && deleteCar(car._id)">Delete</button>
-                  <a class="btn btn-primary btn-sm" [routerLink]="['/cars/edit', car._id]" class="btn btn-primary">Edit</a>
-                  <a class="btn btn-primary btn-sm" [routerLink]="['/cars/details', car._id]" class="btn btn-primary">Detail</a>
-                  <hr>
-                  <button type="button" class="btn btn-success btn-sm" (click)="addToFavorites(car._id)">
-                    Add to Favorites
-                  </button>
+                    
+                    <a style="color: #dc3545; margin-right: 10px;" (click)="car._id && deleteCar(car._id)" role="button">
+                      <i class="fas fa-trash-alt fa-lg"></i>
+                    </a>
+
+                    <a style="color: #28a745; margin-right: 10px;" [routerLink]="['/cars/details', car._id]" role="button">
+                      <i class="fas fa-eye fa-lg"></i>
+                    </a>
+
+                    <a style="color: #007bff; margin-right: 10px;" [routerLink]="['/cars/edit', car._id]" role="button">
+                      <i class="fas fa-edit fa-lg"></i>
+                    </a>
+
+                    <a style="color: #ffc107;" (click)="addToFavorites(car._id)" role="button">
+                      <i class="fas fa-star fa-lg"></i>
+                    </a>
+
+
 
                 </div>
               </div>

@@ -10,7 +10,7 @@ const routes: Routes = [
     path: '',
     component: FrantlayoutsComponent,
     children: [
-      { path: '', loadChildren: () => import('./views/front/userlogin/userlogin.module').then(m => m.UserloginModule), },
+      { path: 'login', loadChildren: () => import('./views/front/userlogin/userlogin.module').then(m => m.UserloginModule), },
       { path: 'registeruser', loadChildren: () => import('./views/front/userregister/userregister.module').then(m => m.UserregisterModule) },
       { path: 'home', loadChildren: () => import('./views/front/home/home.module').then(m => m.HomeModule), canActivate: [AuthGuard] },
       { path: 'cars', loadChildren: () => import('./views/front/cars/cars.module').then(m => m.CarsModule), canActivate: [AuthGuard] },

@@ -19,13 +19,11 @@ export class ListCarsComponent implements OnInit, OnDestroy {
   subscription?: Subscription;
   userId: string | null = null;
 
-
   constructor(private service: CarService ) { }
 
 
-
   searchCars(searchData: { departure: string, destination: string }) {
-    
+
     const { departure, destination } = searchData;
     this.filteredCars = this.cars.filter(
       car => car.departureLocation.toLowerCase().includes(departure.toLowerCase()) &&
@@ -34,21 +32,36 @@ export class ListCarsComponent implements OnInit, OnDestroy {
   }
 
 
-
-
   deleteCar(id: string) {
-    if (confirm("Are you sure you want to delete this car?")) {
-      this.service.deleteCar(id).subscribe(
-        () => {
-          this.cars = this.cars.filter(car => car._id !== id);
-          this.filteredCars = this.filteredCars.filter(car => car._id !== id);
-          console.table(this.cars);
-        },
-        (error) => {
-          console.error('Error deleting car:', error);
-        }
-      );
-    }
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You want to delete this car!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.deleteCar(id).subscribe(
+          () => {
+            this.cars = this.cars.filter(car => car._id !== id);
+            this.filteredCars = this.filteredCars.filter(car => car._id !== id);
+            console.table(this.cars);
+
+            Swal.fire({
+              icon: 'success',
+              title: 'Success',
+              text: 'Car deleted successfully!'
+            });
+          },
+          (error) => {
+            console.error('Error deleting car:', error);
+          }
+        );
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'Car deletion was cancelled :)', 'error');
+      }
+    });
   }
 
 

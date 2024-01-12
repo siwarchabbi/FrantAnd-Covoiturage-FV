@@ -20,6 +20,7 @@ import { NavbarComponent } from './views/front/navbar/navbar.component';
     LayoutsModule,
     HttpClientModule,
     FormsModule
+    
 
   ],
   providers: [],
