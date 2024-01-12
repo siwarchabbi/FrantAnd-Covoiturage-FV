@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-userregister',
@@ -12,7 +15,7 @@ export class UserregisterComponent implements OnInit {
   email: string = '';
   password: string = '';
   
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService , private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -21,19 +24,34 @@ export class UserregisterComponent implements OnInit {
       const username = registerForm.value.username;
       const email = registerForm.value.email;
       const password = registerForm.value.password;
-
+  
       this.loginService.register(username, email, password).subscribe(
         (response) => {
           console.log(response);
-          alert('Registration successful!'); // You might want to redirect or show a success message
+  
+          // Show SweetAlert for registration success
+          Swal.fire({
+            icon: 'success' ,
+            title: 'Registration Successful',
+            text: 'You have successfully registered.',
+          });
+          this.router.navigate(['/']);
+          // You might want to redirect or show a success message
         },
         (error) => {
           console.error('Registration failed:', error);
-          alert('Registration failed. Please try again.');
+  
+          // Show SweetAlert for registration failure
+          Swal.fire({
+            icon: 'error' ,
+            title: 'Registration Failed',
+            text: 'Registration failed. Please try again.',
+          });
         }
       );
     } else {
       console.error('Form is invalid. Check the fields.');
     }
   }
+  
 }
