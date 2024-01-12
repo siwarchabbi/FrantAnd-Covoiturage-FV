@@ -4,15 +4,27 @@
         <div class="row">
           <div class="col-lg-7">
             <br>
-            <h2 class="section-heading"><strong>Car Listings</strong></h2>
+
             <div class="text-lg-end">
               <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#addCars">
                 New Car
               </button>
               </div>
+              <br>
+              <br>
             <app-add-cars></app-add-cars>
-            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+
         </div>
+
+<div>
+      <app-searchcars (searchEvent)="searchCars($event)"></app-searchcars>
+      <br>
+      <br>
+      <br>
+</div>
+
+
+
         <br>
          <div class="row">
           <div class="col-md-6 col-lg-4 mb-4" *ngFor="let car of filteredCars">
@@ -27,7 +39,7 @@
                   <strong>{{car.seatPrice}} DT </strong><span class="mx-1">/</span>Seat
                 </div>
                 <div class="d-block d-md-flex mb-3 border-bottom pb-3">
-                  <div class="listing-feature pr-4">
+                  <div class="listing-feature pr-7">
                     <span class="caption">Available seat :</span>
                     <span class="number">{{car.seatAvailable}}</span>
                   </div>
@@ -44,7 +56,17 @@
                   <span class="caption">Departure Date & Time :</span>
                   <p> <span class="d-block font-weight-bold">{{ car.departureDateTime | date: 'MMM d, y' }}</span>
                     <small>{{ car.departureDateTime | date: 'h:mm a' }}</small></p>
-
+                    <div class="d-block d-md-flex mb-3 border-bottom pb-4">
+                      <div class="listing-feature pr-7">
+                    <span class="caption">Departure location :</span>
+                    <p> <span class="d-block font-weight-bold">{{ car.departureLocation}}</span>
+                    </p>
+                      </div>
+                      <div class="listing-feature pr-7">
+                      <span class="caption"> destination location :</span>
+                      <p> <span class="d-block font-weight-bold">{{ car.destinationLocation}}</span></p>
+                    </div>
+                    </div>
                   <button type="submit" class="btn btn-danger" (click)="car._id && deleteCar(car._id)">Delete</button>
                   <a class="btn btn-primary btn-sm" [routerLink]="['/cars/edit', car._id]" class="btn btn-primary">Edit</a>
                   <a class="btn btn-primary btn-sm" [routerLink]="['/cars/details', car._id]" class="btn btn-primary">Detail</a>

@@ -6,11 +6,13 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./searchcars.component.css']
 })
 export class SearchcarsComponent {
+  @Output() searchEvent = new EventEmitter<{ departure: string, destination: string }>();
+  departureLocation: string = '';
+  destinationLocation: string = '';
 
-  @Output() searchEvent = new EventEmitter<string>();
-
-  sendSearchTerm(search : string){
-    this.searchEvent.emit(search);
+  searchCars() {
+    console.log('Departure Location:', this.departureLocation);
+  console.log('Destination Location:', this.destinationLocation);
+    this.searchEvent.emit({ departure: this.departureLocation, destination: this.destinationLocation });
   }
-
 }
