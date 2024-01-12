@@ -109,3 +109,23 @@
 
 
   
+
+
+
+
+
+  .update-button {
+    background-color: rgb(240, 193, 4);
+    color: black;
+  }
+  .update-button2 {
+    background-color: rgb(12, 74, 19);
+    color: black;
+  }
+  
+  
+  .delete-button {
+    background-color: rgb(184, 55, 55);
+    color: white;
+  }
+  
