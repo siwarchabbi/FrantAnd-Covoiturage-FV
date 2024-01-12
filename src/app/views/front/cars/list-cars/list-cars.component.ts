@@ -3,6 +3,8 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Car } from '../entity/car';
 import { Subscription } from 'rxjs';
 import { CarService } from '../services/car.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-list-cars',
@@ -15,8 +17,10 @@ export class ListCarsComponent implements OnInit, OnDestroy {
   filteredCars: Car[] = [];
   activeCar?: Car;
   subscription?: Subscription;
+  userId: string | null = null;
 
-  constructor(private service: CarService) { }
+
+  constructor(private service: CarService ) { }
 
   searchCarModel(search: string) {
     this.filteredCars = this.cars.filter(
@@ -33,6 +37,7 @@ export class ListCarsComponent implements OnInit, OnDestroy {
       car => car.destinationLocation.toLowerCase().includes(search.toLowerCase())
     );
   }
+
 
   deleteCar(id: string) {
     if (confirm("Are you sure you want to delete this car?")) {
@@ -56,8 +61,43 @@ export class ListCarsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.fetchCars();
-  }
+    this.userId = localStorage.getItem('id');
 
+
+  }
+  addToFavorites(carId: string | undefined): void {
+    if (this.userId !== null) {
+      if (carId !== undefined) {
+        this.service.addCarToFavorites(this.userId, carId).subscribe(
+          () => {
+            console.log('Car added to favorites successfully.');
+  
+            Swal.fire({
+              icon: 'success',
+              title: 'Success',
+              text: 'Car added to favorites successfully!',
+            });
+  
+          },
+          (error) => {
+            console.error('Error adding car to favorites:', error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'An error occurred while adding the car to favorites.',
+            });
+          }
+        );
+      } else {
+        console.error('Car ID is undefined. Unable to add car to favorites.');
+      }
+    } else {
+      console.error('User ID is null. Unable to add car to favorites.');
+    }
+  }
+  
+  
+  
 
   fetchCars() {
     this.subscription = this.service.getCars().subscribe(
