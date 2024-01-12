@@ -1,70 +1,194 @@
-<div class="container-xl px-4 mt-4">
 
-  <hr class="mt-0 mb-4">
-  <div class="row">
-      <div class="col-xl-4">
-          <!-- Profile picture card-->
-          <div class="card mb-4 mb-xl-0">
-              <div class="card-header">Profile Picture</div>
-              <div class="card-body text-center">
-                  <!-- Profile picture image-->
-                  <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                  <!-- Profile picture help block-->
-                  <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                  <!-- Profile picture upload button-->
-                  <button class="btn btn-primary" type="button">Upload new image</button>
-              </div>
+
+              <!doctype html>
+<html lang="en">
+
+  <head>
+    <title>CarRental &mdash; Free Website Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+  </head>
+
+  <body>
+
+
+    <div class="site-wrap" id="home-section">
+
+      <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
           </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
       </div>
-      <div class="col-xl-8">
-          <!-- Account details card-->
-          <div class="card mb-4">
-              <div class="card-header">Account Details</div>
-              <div class="card-body">
-                <form #formuser="ngForm" (ngSubmit)="updateProfile(formuser)">
-                      <!-- Form Group (username)-->
-                      <div class="mb-3">
-                          <label class="small mb-1" for="inputUsername"><strong>Username</strong></label>
-                          <input class="form-control" id="inputUsername" type="text" [(ngModel)]="userProfile.username" name="username">
-                      </div>
-                      <!-- Form Row-->
-                      <div class="row gx-3 mb-3">
-                          <!-- Form Group (first name)-->
-                          <div class="col-md-6">
-                              <label class="small mb-1" for="inputFirstName"><strong>First name</strong></label>
-                              <input class="form-control" id="inputFirstName" type="text" [(ngModel)]="userProfile.firstname" name="firstname">
-                          </div>
-                          <!-- Form Group (last name)-->
-                          <div class="col-md-6">
-                              <label class="small mb-1" for="inputLastName"><strong>Last name</strong></label>
-                              <input class="form-control" id="inputLastName" type="text" [(ngModel)]="userProfile.lastname" name="lastname">
-                          </div>
-                      </div>
 
-                      <div class="row gx-3 mb-3">
 
-                          <div class="col-md-6">
-                              <label class="small mb-1" for="inputOrgName"><strong>Phone Number</strong></label>
-                              <input class="form-control" id="inputOrgName" type="text" [(ngModel)]="userProfile.phone" name="phone">
-                          </div>
 
-                          <div class="col-md-6">
-                              <label class="small mb-1" for="inputLocation"><strong>Age</strong></label>
-                              <input class="form-control" id="inputLocation" type="text" [(ngModel)]="userProfile.age" name="age">
-                          </div>
-                      </div>
-                      <div class="mb-3">
-                          <label class="small mb-1" for="inputEmailAddress"><strong>E-mail address</strong></label>
-                          <input class="form-control" id="inputEmailAddress" type="email" [(ngModel)]="userProfile.email" name="email">
-                      </div>
-                      <div class="mb-3">
-                        <label class="small mb-1" for="inputEmailAddress"><strong>Address</strong></label>
-                        <input class="form-control" id="inputEmailAddress" type="text" [(ngModel)]="userProfile.address" name="address">
+      <header class="site-navbar site-navbar-target" role="banner">
+
+        <div class="container">
+          <div class="row align-items-center position-relative">
+
+            <div class="col-3">
+              <div class="site-logo">
+                <a href="index.html"><strong>TawSila</strong></a>
+              </div>
+            </div>
+
+            <div class="col-9  text-right">
+
+              <span class="d-inline-block d-lg-none"><a href="#" class=" site-menu-toggle js-menu-toggle py-5 "><span class="icon-menu h3 text-black"></span></a></span>
+
+              <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
+                <ul class="site-menu main-menu js-clone-nav ml-auto ">
+                  <li class="active"><a href="home" class="nav-link">Home</a></li>
+                  <li><a  [routerLink]="['/cars/list'] "  class="nav-link">Cars</a></li>
+
+                  <li><a [routerLink]="['/favorie']"  class="nav-link">Favoris</a></li>
+                  <li><a [routerLink]="['/profile/getprofile', userId]"  class="nav-link">Profile</a></li>
+
+                
+                </ul>
+              </nav>
+            </div>
+
+
+          </div>
+        </div>
+
+      </header>
+
+
+
+
+    
+
+      <div class="site-section">
+        <div class="container">
+            <div class="container-xl px-4 mt-4">
+
+                <hr class="mt-0 mb-4">
+                <div class="row">
+                    <div class="col-xl-4">
+                        <!-- Profile picture card-->
+                        <div class="card mb-4 mb-xl-0">
+                            <div class="card-header">Profile Picture</div>
+                            <div class="card-body text-center">
+                                <!-- Profile picture image-->
+                                <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                                <!-- Profile picture help block-->
+                                <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                                <!-- Profile picture upload button-->
+                                <button class="btn btn-primary" type="button">Upload new image</button>
+                            </div>
+                        </div>
                     </div>
-                      <button class="btn btn-primary" type="submit">Save changes</button>
-                  </form>
+                    <div class="col-xl-8">
+                        <!-- Account details card-->
+                        <div class="card mb-4">
+                            <div class="card-header">Account Details</div>
+                            <div class="card-body">
+                              <form #formuser="ngForm" (ngSubmit)="updateProfile(formuser)">
+                                    <!-- Form Group (username)-->
+                                    <div class="mb-3">
+                                        <label class="small mb-1" for="inputUsername"><strong>Username</strong></label>
+                                        <input class="form-control" id="inputUsername" type="text" [(ngModel)]="userProfile.username" name="username">
+                                    </div>
+                                    <!-- Form Row-->
+                                    <div class="row gx-3 mb-3">
+                                        <!-- Form Group (first name)-->
+                                        <div class="col-md-6">
+                                            <label class="small mb-1" for="inputFirstName"><strong>First name</strong></label>
+                                            <input class="form-control" id="inputFirstName" type="text" [(ngModel)]="userProfile.firstname" name="firstname">
+                                        </div>
+                                        <!-- Form Group (last name)-->
+                                        <div class="col-md-6">
+                                            <label class="small mb-1" for="inputLastName"><strong>Last name</strong></label>
+                                            <input class="form-control" id="inputLastName" type="text" [(ngModel)]="userProfile.lastname" name="lastname">
+                                        </div>
+                                    </div>
+              
+                                    <div class="row gx-3 mb-3">
+              
+                                        <div class="col-md-6">
+                                            <label class="small mb-1" for="inputOrgName"><strong>Phone Number</strong></label>
+                                            <input class="form-control" id="inputOrgName" type="text" [(ngModel)]="userProfile.phone" name="phone">
+                                        </div>
+              
+                                        <div class="col-md-6">
+                                            <label class="small mb-1" for="inputLocation"><strong>Age</strong></label>
+                                            <input class="form-control" id="inputLocation" type="text" [(ngModel)]="userProfile.age" name="age">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="small mb-1" for="inputEmailAddress"><strong>E-mail address</strong></label>
+                                        <input class="form-control" id="inputEmailAddress" type="email" [(ngModel)]="userProfile.email" name="email">
+                                    </div>
+                                    <div class="mb-3">
+                                      <label class="small mb-1" for="inputEmailAddress"><strong>Address</strong></label>
+                                      <input class="form-control" id="inputEmailAddress" type="text" [(ngModel)]="userProfile.address" name="address">
+                                  </div>
+                                    <button class="btn btn-primary" type="submit">Save changes</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
               </div>
-          </div>
+        </div>
       </div>
-  </div>
-</div>
+
+
+
+ 
+ 
+
+  
+
+  
+
+
+      <footer class="site-footer">
+        <div class="container">
+          <div class="row">
+           
+          
+          </div>
+          <div class="row pt-5 mt-5 text-center">
+            <div class="col-md-12">
+              <div class="border-top pt-5">
+                <p>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >TawSsila</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+
+
+  </body>
+
+</html>
+
+
+
+
+
+
+              
+
+
+
+
+

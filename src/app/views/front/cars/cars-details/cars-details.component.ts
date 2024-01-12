@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { CarService } from '../services/car.service';
 import { Car } from '../entity/car';
 import { Comment } from '../entity/Comment';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -81,17 +82,29 @@ export class CarsDetailsComponent implements OnInit, OnDestroy {
   addComment() {
     this.newComment.user = this.userId!;
     this.newComment.car = this.carId;
-
+  
     this.subscription = this.service.addComment(this.newComment).subscribe(
       (comment: Comment) => {
         console.log('Added comment:', comment);
         this.fetchComments();
+        // Show SweetAlert on successful comment addition
+        Swal.fire({
+          icon: 'success' ,
+          title: 'Comment Added',
+          text: 'The comment has been added successfully.',
+        });
       },
       (error) => {
         console.error('Error adding comment:', error);
+        // You can also show a SweetAlert for the error case if needed
+        Swal.fire({
+          icon: 'error',
+          title: 'Add Comment Failed',
+          text: 'There was an error adding the comment.',
+        });
       }
     );
-
+  
     this.newComment = {
       user: '',
       car: '',
@@ -99,6 +112,9 @@ export class CarsDetailsComponent implements OnInit, OnDestroy {
       datecreation: new Date(),
     };
   }
+
+
+
   updateComment() {
     console.log('Entering updateComment function');
     if (this.selectedComment && this.selectedComment._id) {
@@ -108,28 +124,49 @@ export class CarsDetailsComponent implements OnInit, OnDestroy {
           console.log('Updated comment:', updatedComment);
           this.fetchComments();
           this.selectedComment = null;
+          // Show SweetAlert on successful update
+          Swal.fire({
+            icon: 'success' ,
+            title: 'Update Successful',
+            text: 'The comment has been updated successfully.',
+          });
         },
         (error) => {
           console.error('Error updating comment:', error);
-
+          // You can also show a SweetAlert for the error case if needed
+          Swal.fire({
+            icon: 'error' ,
+            title: 'Update Failed',
+            text: 'There was an error updating the comment.',
+          });
         }
       );
     }
   }
   
   
-
   deleteComment(commentId: string | undefined) {
     if (commentId) {
-      this.subscription = this.service.deleteComment(commentId).subscribe(
-        () => {
-          console.log('Deleted comment:', commentId);
-          this.fetchComments();
-        },
-        (error) => {
-          console.error('Error deleting comment:', error);
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'You will not be able to recover this comment!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.subscription = this.service.deleteComment(commentId).subscribe(
+            () => {
+              console.log('Deleted comment:', commentId);
+              this.fetchComments();
+            },
+            (error) => {
+              console.error('Error deleting comment:', error);
+            }
+          );
         }
-      );
+      });
     }
   }
   

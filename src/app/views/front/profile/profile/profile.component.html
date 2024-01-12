@@ -1,81 +1,201 @@
-<div class="container-xl px-4 mt-4">
 
-  <hr class="mt-0 mb-4">
-  <div class="row">
-      <div class="col-xl-4">
-          <!-- Profile picture card-->
-          <div class="card mb-4 mb-xl-0">
-              <div class="card-header">Profile Picture</div>
-              <div class="card-body text-center">
-                  <!-- Profile picture image-->
-                  <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                  <!-- Profile picture help block-->
-                  <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                  <!-- Profile picture upload button-->
-                  <button class="btn btn-primary" type="button">Upload new image</button>
-              </div>
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>CarRental &mdash; Free Website Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+  </head>
+
+  <body>
+
+
+    <div class="site-wrap" id="home-section">
+
+      <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
           </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
       </div>
-      <div class="col-xl-8">
-          <!-- Account details card-->
-          <div class="card mb-4">
-              <div class="card-header">Account Details</div>
-              <div class="card-body">
-                  <form>
-                      <!-- Form Group (username)-->
-                      <div class="mb-3">
-                        <strong> Username</strong>
-                        <br>
-                        <small> {{userProfile.username}}</small>
-                      </div>
-                      <!-- Form Row-->
-                      <div class="row gx-3 mb-3">
-                          <!-- Form Group (first name)-->
-                          <div class="col-md-6">
-                            <strong> First Name </strong>
-                            <br>
-                            <small>{{userProfile.firstname}}</small>
-                          </div>
-                          <!-- Form Group (last name)-->
-                          <div class="col-md-6">
-                            <strong> Last Name</strong>
-                            <br>
-                            <small>{{userProfile.lastname}}</small>
-                          </div>
-                      </div>
-                      <!-- Form Row        -->
-                      <div class="row gx-3 mb-3">
-                          <!-- Form Group (organization name)-->
-                         <div class="col-md-6">
-                          <strong> Phone Number</strong>
-                          <br>
-                            <small>(+216) {{userProfile.phone}}</small>
-                          </div>
-                          <!-- Form Group (birthday)-->
-                          <div class="col-md-6">
-                            <strong> Age</strong>
-                            <br>
-                            <small>{{userProfile.age}}</small>
-                          </div>
-                      </div>
-                      <!-- Form Group (email address)-->
-                      <div class="mb-3">
-                        <strong> E-mail adress</strong>
-                        <br>
-                        <small>{{userProfile.email}}</small>
-                      </div>
-                      <div class="mb-3">
-                        <strong> Address</strong>
-                        <br>
-                        <small>{{userProfile.address}}</small>
-                      </div>
-
-                      <button class="btn btn-primary" [routerLink]="['/profile/update', userId]">Edit your Profile</button>
 
 
-                  </form>
+
+      <header class="site-navbar site-navbar-target" role="banner">
+
+        <div class="container">
+          <div class="row align-items-center position-relative">
+
+            <div class="col-3">
+              <div class="site-logo">
+                <a href="index.html"><strong>TawSila</strong></a>
               </div>
+            </div>
+
+            <div class="col-9  text-right">
+
+              <span class="d-inline-block d-lg-none"><a href="#" class=" site-menu-toggle js-menu-toggle py-5 "><span class="icon-menu h3 text-black"></span></a></span>
+
+              <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
+                <ul class="site-menu main-menu js-clone-nav ml-auto ">
+                  <li class="active"><a href="home" class="nav-link">Home</a></li>
+                  <li><a  [routerLink]="['/cars/list'] "  class="nav-link">Cars</a></li>
+
+                  <li><a [routerLink]="['/favorie']"  class="nav-link">Favoris</a></li>
+                  <li><a [routerLink]="['/profile/getprofile', userId]"  class="nav-link">Profile</a></li>
+
+                
+                </ul>
+              </nav>
+            </div>
+
+
           </div>
+        </div>
+
+      </header>
+
+
+
+
+      <div class="site-section">
+        <div class="container">
+          <div class="container-xl px-4 mt-4">
+
+            <hr class="mt-0 mb-4">
+            <div class="row">
+                <div class="col-xl-4">
+                    <!-- Profile picture card-->
+                    <div class="card mb-4 mb-xl-0">
+                        <div class="card-header">Profile Picture</div>
+                        <div class="card-body text-center">
+                            <!-- Profile picture image-->
+                            <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                            <!-- Profile picture help block-->
+                            <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                            <!-- Profile picture upload button-->
+                            <button class="btn btn-primary" type="button">Upload new image</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-8">
+                    <!-- Account details card-->
+                    <div class="card mb-4">
+                        <div class="card-header">Account Details</div>
+                        <div class="card-body">
+                            <form>
+                                <!-- Form Group (username)-->
+                                <div class="mb-3">
+                                  <strong> Username</strong>
+                                  <br>
+                                  <small> {{userProfile.username}}</small>
+                                </div>
+                                <!-- Form Row-->
+                                <div class="row gx-3 mb-3">
+                                    <!-- Form Group (first name)-->
+                                    <div class="col-md-6">
+                                      <strong> First Name </strong>
+                                      <br>
+                                      <small>{{userProfile.firstname}}</small>
+                                    </div>
+                                    <!-- Form Group (last name)-->
+                                    <div class="col-md-6">
+                                      <strong> Last Name</strong>
+                                      <br>
+                                      <small>{{userProfile.lastname}}</small>
+                                    </div>
+                                </div>
+                                <!-- Form Row        -->
+                                <div class="row gx-3 mb-3">
+                                    <!-- Form Group (organization name)-->
+                                   <div class="col-md-6">
+                                    <strong> Phone Number</strong>
+                                    <br>
+                                      <small>(+216) {{userProfile.phone}}</small>
+                                    </div>
+                                    <!-- Form Group (birthday)-->
+                                    <div class="col-md-6">
+                                      <strong> Age</strong>
+                                      <br>
+                                      <small>{{userProfile.age}}</small>
+                                    </div>
+                                </div>
+                                <!-- Form Group (email address)-->
+                                <div class="mb-3">
+                                  <strong> E-mail adress</strong>
+                                  <br>
+                                  <small>{{userProfile.email}}</small>
+                                </div>
+                                <div class="mb-3">
+                                  <strong> Address</strong>
+                                  <br>
+                                  <small>{{userProfile.address}}</small>
+                                </div>
+          
+                                <button class="btn btn-primary" [routerLink]="['/profile/update', userId]">Edit your Profile</button>
+          
+          
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+       
+
+        
+        </div>
       </div>
-  </div>
-</div>
+
+     
+
+
+
+    
+
+ 
+
+  
+
+  
+
+
+      <footer class="site-footer">
+        <div class="container">
+          <div class="row">
+           
+          
+          </div>
+          <div class="row pt-5 mt-5 text-center">
+            <div class="col-md-12">
+              <div class="border-top pt-5">
+                <p>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >TawSsila</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+
+
+  </body>
+
+</html>

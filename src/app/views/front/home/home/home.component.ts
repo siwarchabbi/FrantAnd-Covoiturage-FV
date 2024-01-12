@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  userId: string | null = null;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.userId = localStorage.getItem('id');
+
   }
 
 }
