@@ -13,39 +13,39 @@
         </div>
         <div class="modal-body">
 
-          <form class="row g-3"   #f="ngForm" (ngSubmit)="editCar(f)"  >
+          <form class="row g-3"   #f="ngForm" (ngSubmit)="updateCar()" >
 
             <div class="col-md-12">
               <label for="image" class="form-label">Vehicle Image</label>
-              <input type="file"  class="form-control" id="image" name="image" ngModel #image="ngModel"   [(ngModel)]="car!.image" required>
+              <input type="file"  class="form-control"  id="image" name="image" (change)="onImageChange($event)">
             </div>
             <div class="col-md-12">
               <label for="departuredatetime" class="form-label">Departure Date and Time</label>
-              <input type="datetime-local" class="form-control" id="departuredatetime" name="departureDateTime" ngModel #departureDateTime="ngModel" [(ngModel)]="car!.departureDateTime" required>
+              <input type="datetime-local" class="form-control" id="departuredatetime" name="departureDateTime" ngModel #departureDateTime="ngModel" [(ngModel)]="carData!.departureDateTime" required>
             </div>
             <div class="col-md-6">
               <label for="localisation" class="form-label">Departure Location</label>
-              <input type="text" class="form-control" id="localisation" name="departureLocation" ngModel #departureLocation="ngModel" [(ngModel)]="car!.departureLocation" required>
+              <input type="text" class="form-control" id="localisation" name="departureLocation" ngModel #departureLocation="ngModel" [(ngModel)]="carData!.departureLocation" required>
             </div>
             <div class="col-md-6">
               <label for="destination" class="form-label">Destination Location</label>
-              <input type="text" class="form-control" id="destination"  name="destinationLocation" ngModel #destinationLocation="ngModel" [(ngModel)]="car!.destinationLocation" required>
+              <input type="text" class="form-control" id="destination"  name="destinationLocation" ngModel #destinationLocation="ngModel" [(ngModel)]="carData!.destinationLocation" required>
             </div>
             <div class="col-md-6">
               <label for="seatprice" class="form-label">Seat Price</label>
-              <input type="number" class="form-control" id="seatprice" name="seatPrice" ngModel #seatPrice="ngModel"[(ngModel)]="car!.seatPrice" required>
+              <input type="number" class="form-control" id="seatprice" name="seatPrice" ngModel #seatPrice="ngModel"[(ngModel)]="carData!.seatPrice" required>
             </div>
             <div class="col-md-6">
               <label for="seatavailable" class="form-label">Available Seats</label>
-              <input type="text" class="form-control" id="seatavailable" name="seatAvailable" ngModel #seatavailable="ngModel" [(ngModel)]="car!.seatAvailable" required>
+              <input type="text" class="form-control" id="seatavailable" name="seatAvailable" ngModel #seatavailable="ngModel" [(ngModel)]="carData!.seatAvailable" required>
             </div>
             <div class="col-md-6">
               <label for="model" class="form-label">Vehicle Model</label>
-              <input type="text" class="form-control" id="model" name="model" ngModel #model="ngModel" [(ngModel)]="car!.model"required>
+              <input type="text" class="form-control" id="model" name="model" ngModel #model="ngModel" [(ngModel)]="carData!.model"required>
             </div>
             <div class="col-md-6">
-              <label for="status" class="form-label">Carpool Status</label>
-              <select id="status" name="status" class="form-select" ngModel #status="ngModel" [(ngModel)]="car!.status" required>
+              <label for="status" class="form-label">carpool Status</label>
+              <select id="status" name="status" class="form-select" ngModel #status="ngModel" [(ngModel)]="carData!.status" required>
                 <option selected>Choose</option>
                 <option>confirmed</option>
                 <option>pending</option>
@@ -54,7 +54,7 @@
             </div>
             <div class="col-md-12">
               <label for="matricule" class="form-label">Vehicle Registration Number</label>
-              <input type="text" class="form-control" id="matricule" name="matricule" ngModel #matricule="ngModel" [(ngModel)]="car!.matricule" maxlength="10" required>
+              <input type="text" class="form-control" id="matricule" name="matricule" ngModel #matricule="ngModel" [(ngModel)]="carData!.matricule" maxlength="10" required>
             </div>
             <button type="submit" class="btn btn-success" [disabled]="f.invalid"  >Valider</button>
           </form>

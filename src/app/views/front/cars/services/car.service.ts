@@ -42,20 +42,12 @@ export class CarService {
     const url = `${this.url}/api/comments/${commentId}`;
     return this.httpClient.delete<void>(url, this.options);
   }
-  
+
 
   getCars(): Observable<Car[]> {
     return this.httpClient.get<Car[]>(`${this.url}/`, this.options);
   }
 
-  addCar(car: Car): Observable<Car> {
-    return this.httpClient.post<Car>(`${this.url}/`, car, this.options).pipe(
-      catchError((error: any) => {
-        console.error('Error adding car:', error);
-        throw error; // Rethrow the error or handle it as needed
-      })
-    );
-  }
   createCar(carData: any, image: File): Observable<any> {
     const formData = new FormData();
     formData.append('image', image);
@@ -71,9 +63,15 @@ export class CarService {
     return this.httpClient.get<Car>(`${this.url}/${id}`);
   }
 
-  editCar(car: Car): Observable<Car> {
-    return this.httpClient.put<Car>(`${this.url}/${car._id}`, car, this.options);
+  updateCar(carId: string, carData: any, image: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('image', image);
+    for (const key in carData) {
+      formData.append(key, carData[key]);
+    }
+    return this.httpClient.put(`${this.url}/${carId}`, formData);
   }
+
 
   deleteCar(id: string): Observable<Object> {
     return this.httpClient.delete<Object>(`${this.url}/${id}`);

@@ -15,7 +15,7 @@
 
           <div class="col-md-12">
             <label for="image" class="form-label">Vehicle Image</label>
-            <input type="file" (change)="onFileSelected($event)" name="image" accept="image/*" required>
+            <input type="file" class="form-control" (change)="onFileSelected($event)" name="image" accept="image/*" required>
           </div>
           <div class="col-md-12">
             <label for="departuredatetime" class="form-label">Departure Date and Time</label>
@@ -50,14 +50,11 @@
               <option value="cancelled">Cancelled</option>
             </select>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-12">
             <label for="matricule" class="form-label">Vehicle Registration Number</label>
             <input type="text" class="form-control" id="matricule" name="matricule" [(ngModel)]="car.matricule" maxlength="10" required>
           </div>
-          <div class="col-md-6">
-            <label for="user" class="form-label">Vehicle Registration Number</label>
-            <input type="text" class="form-control" id="user" name="user" [(ngModel)]="car.user" required>
-          </div>
+
           <button type="submit" class="btn btn-success" [disabled]="f.invalid"  >add</button>
         </form>
       </div>
