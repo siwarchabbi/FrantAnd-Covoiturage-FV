@@ -1,65 +1,61 @@
-
-  <div class="main-parent">
-    <div class="form-wrap">
-      <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
-        <h1><span>Tw</span>Sila</h1>
-        <div class="single-input">
-          <input
-            type="username"
-            class="form-control"
-            id="username"
-            name="username"
-            placeholder="Enter your Username"
-            autofocus
-            required
-            [(ngModel)]="username"  
-          />
-        </div>
-
-        <div class="single-input">
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            name="email"
-            placeholder="Enter your Email"
-            autofocus
-            required
-            [(ngModel)]="email"
-            #emailInput="ngModel" 
-            pattern="[^@\s]+@[^@\s]+\.[^@\s]+" 
-          />
-       
-          
-        </div>
-        
-  
-        <div class="single-input">
-          <input
-            type="password"
-            id="password"
-            name="password"
-            class="form-control"
-            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-            required
-            [(ngModel)]="password"  
-          />
-          <!-- Display password length error message in red block -->
-        </div>
-        
-  
-        <div class="submit-button">
-          <button class="button btn btn-primary d-grid w-100" type="submit">Register</button>
-        </div>
-        <div class="center-div">
-          <h5>OR</h5>
-        </div>
-        <div class="center-div">
-          <a routerLink="/"><span>Login</span></a>
+<div class="main-parent">
+  <div class="form-wrap">
+    <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+      <h1><span>Tw</span>Sila</h1>
+      <div class="single-input">
+        <input
+          type="username"
+          class="form-control"
+          id="username"
+          name="username"
+          placeholder="Enter your Username"
+          autofocus
+          required
+          [(ngModel)]="username"  
+        />
+        <div class="validation-message" *ngIf="validateInput(registerForm.controls['username'], 'required')">Username is required.</div>
       </div>
-      
-      </form>
-    </div>
+
+      <div class="single-input">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          placeholder="Enter your Email"
+          autofocus
+          required
+          [(ngModel)]="email"
+          #emailInput="ngModel" 
+          pattern="[^@\s]+@[^@\s]+\.[^@\s]+" 
+        />
+        <div class="validation-message" *ngIf="validateInput(registerForm.controls['email'], 'required')">Email is required.</div>
+        <div class="validation-message" *ngIf="validateInput(registerForm.controls['email'], 'pattern')">Invalid email format.</div>
+      </div>
+
+      <div class="single-input">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="form-control"
+          placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+          required
+          [(ngModel)]="password"  
+        />
+        <div class="validation-message" *ngIf="validateInput(registerForm.controls['password'], 'required')">Password is required.</div>
+        <div class="validation-message" *ngIf="validateInput(registerForm.controls['password'], 'minlength')">Password must be at least 6 characters long.</div>
+      </div>
+
+      <div class="submit-button">
+        <button class="button btn btn-primary d-grid w-100" type="submit">Register</button>
+      </div>
+      <div class="center-div">
+        <h5>OR</h5>
+      </div>
+      <div class="center-div">
+        <a routerLink="/"><span>Login</span></a>
+      </div>
+    </form>
   </div>
-  
-  
+</div>
