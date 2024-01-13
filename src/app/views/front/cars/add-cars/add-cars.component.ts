@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+// Inside AddCarsComponent
+
+import { Component, EventEmitter, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { CarService } from '../services/car.service';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
 import { Car } from '../entity/car';
 
 @Component({
@@ -13,6 +15,8 @@ export class AddCarsComponent {
   userId: string | null = null;
   selectedFile: File | null = null;
   car: Car = new Car('', '', new Date(), '', 0, '', '', '', 'pending', '');
+
+  @Output() formClosed: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(private service: CarService, private router: Router) {}
 
@@ -46,7 +50,7 @@ export class AddCarsComponent {
       (response) => {
         console.log('Car created successfully:', response);
         form.resetForm();
-        this.router.navigate(['/cars/list']);
+        this.formClosed.emit(); // Emit the event to notify the parent component to close the form
       },
       (error) => {
         console.error('Error creating car:', error);
