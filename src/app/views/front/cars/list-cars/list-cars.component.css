@@ -14,3 +14,12 @@ body {
   background: none;
 }
 
+.custom-btn {
+  color: #c29005;
+  border-color: #c29005;
+}
+
+.custom-btn:hover {
+  background-color: #c29005;
+  color: #fff; /* Change text color on hover if needed */
+}

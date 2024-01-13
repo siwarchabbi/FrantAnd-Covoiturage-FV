@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FavorieService } from '../../service/favorie.service';
 import Swal from 'sweetalert2';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Component({
@@ -54,7 +55,7 @@ export class FavorieuserComponent implements OnInit {
               title: 'Success!',
               text: 'Favorite deleted successfully.',
             });
-  
+
             // Update the local favorites array after deletion
             this.favorites = this.favorites.filter(favorite => favorite._id !== favoriteId);
           },

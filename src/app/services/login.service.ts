@@ -49,5 +49,10 @@ export class LoginService {
   updateUserProfile(userId: string, updateData: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl2}/update/${userId}`, updateData);
   }
+  logout(): void {
 
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.userData = null;
+  }
 }

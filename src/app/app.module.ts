@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { LayoutsModule } from './layouts/layouts.module';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './views/front/navbar/navbar.component';
+import { FooterComponent } from './views/front/footer/footer.component';
+import { LogoutComponent } from './views/front/logout/logout.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent,
+    LogoutComponent,
 
   ],
   imports: [
@@ -20,7 +24,7 @@ import { NavbarComponent } from './views/front/navbar/navbar.component';
     LayoutsModule,
     HttpClientModule,
     FormsModule
-    
+
 
   ],
   providers: [],

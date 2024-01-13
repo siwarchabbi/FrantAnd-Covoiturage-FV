@@ -7,16 +7,22 @@ import { CarsDetailsComponent } from './cars-details/cars-details.component';
 import { CarsRoutingModule } from './cars-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ListCarsComponent } from './list-cars/list-cars.component';
+import { AllCarsComponent } from './all-cars/all-cars.component';
+
+
 
 
 
 @NgModule({
   declarations: [
-    SearchcarsComponent,
+
     AddCarsComponent,
     EditCarsComponent,
     CarsDetailsComponent,
-    ListCarsComponent
+    ListCarsComponent,
+    SearchcarsComponent,
+    AllCarsComponent
+
   ],
   imports: [
     CommonModule,

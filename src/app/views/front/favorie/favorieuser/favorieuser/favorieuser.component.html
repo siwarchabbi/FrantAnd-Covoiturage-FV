@@ -1,99 +1,35 @@
-<!-- favorites.component.html -->
 
+<div class="hero" style="background-image: url('../../../../../assets/images/hero_1_a.jpg');">
 
-  
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-lg-10">
 
+        <div class="row mb-5">
+          <div class="col-lg-7 intro">
+            <h2><strong>TwSila: Share the Ride, Share the Journey</strong> <small>  Your Seamless Carpooling Experience Starts Here!</small></h2>
 
-
-
-  
-
-
-
-
-
-<!doctype html>
-<html lang="en">
-
-  <head>
-    <title>CarRental &mdash; Free Website Template by Colorlib</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
-
-  </head>
-
-  <body>
-
-
-    <div class="site-wrap" id="home-section">
-
-      <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-          <div class="site-mobile-menu-close mt-3">
-            <span class="icon-close2 js-menu-toggle"></span>
           </div>
         </div>
-        <div class="site-mobile-menu-body"></div>
+
+
       </div>
+    </div>
+  </div>
+</div>
 
-
-
-      <header class="site-navbar site-navbar-target" role="banner">
-
-        <div class="container">
-          <div class="row align-items-center position-relative">
-
-            <div class="col-3">
-              <div class="site-logo">
-                <a href="index.html"><strong>TawSila</strong></a>
-              </div>
-            </div>
-
-            <div class="col-9  text-right">
-
-              <span class="d-inline-block d-lg-none"><a href="#" class=" site-menu-toggle js-menu-toggle py-5 "><span class="icon-menu h3 text-black"></span></a></span>
-
-              <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
-                <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                  <li class="active"><a href="home" class="nav-link">Home</a></li>
-                  <li><a  [routerLink]="['/cars/list'] "  class="nav-link">Cars</a></li>
-
-                  <li><a [routerLink]="['/favoris']"  class="nav-link">Favoris</a></li>
-                  <li><a [routerLink]="['/profile/getprofile', userId]"  class="nav-link">Profile</a></li>
-
-                
-                </ul>
-              </nav>
-            </div>
-
-
-          </div>
-        </div>
-
-      </header>
-
-
-
-
-      <div class="site-section">
-        <div class="container">
-          <div class="container-xl px-4 mt-4">
-
-            <hr class="mt-0 mb-4">
-            <div class="row">
-              
-             
+  <div class="site-section bg-light">
+    <div class="container">
+      <div class="row">
 
 
                 <div class="container mt-5">
                     <h2>Favorite Cars</h2>
-                  
+
                     <div *ngIf="favorites.length === 0">
                       <p>No favorite cars found.</p>
                     </div>
-                  
+
                     <div *ngFor="let favorite of favorites">
                       <div class="card mb-3">
                         <div class="row g-0">
@@ -119,50 +55,21 @@
 
             </div>
           </div>
-       
 
-        
+
+
         </div>
-      </div>
-
-     
 
 
 
-    
-
- 
-
-  
-
-  
-
-
-      <footer class="site-footer">
-        <div class="container">
-          <div class="row">
-           
-          
-          </div>
-          <div class="row pt-5 mt-5 text-center">
-            <div class="col-md-12">
-              <div class="border-top pt-5">
-                <p>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >TawSsila</a>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </footer>
-
-    </div>
 
 
 
-  </body>
 
-</html>
+
+
+
+
+
+
+
