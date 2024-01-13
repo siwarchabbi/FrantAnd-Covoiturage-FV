@@ -10,7 +10,7 @@ export class Car {
   matricule: string;
   status: 'confirmed' | 'cancelled' | 'pending';
   image: string;
-
+  isButtonClicked: boolean = false;
   constructor(
     user: string,
     destinationLocation: string,

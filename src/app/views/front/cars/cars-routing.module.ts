@@ -5,6 +5,7 @@ import { AddCarsComponent } from './add-cars/add-cars.component';
 import { EditCarsComponent } from './edit-cars/edit-cars.component';
 import { ListCarsComponent } from './list-cars/list-cars.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
+import { AllCarsComponent } from './all-cars/all-cars.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path:'add', component : AddCarsComponent ,canActivate: [AuthGuard] },
   {path:'edit/:id', component: EditCarsComponent,canActivate: [AuthGuard] },
   {path:'list', component: ListCarsComponent ,canActivate: [AuthGuard] },
-  {path:'', redirectTo:'list', pathMatch:'full'}
+  {path:'all', component: AllCarsComponent ,canActivate: [AuthGuard] },
+
 ];
 
 @NgModule({

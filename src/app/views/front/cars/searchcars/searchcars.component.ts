@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-searchcars',
@@ -12,7 +12,7 @@ export class SearchcarsComponent {
 
   searchCars() {
     console.log('Departure Location:', this.departureLocation);
-  console.log('Destination Location:', this.destinationLocation);
+    console.log('Destination Location:', this.destinationLocation);
     this.searchEvent.emit({ departure: this.departureLocation, destination: this.destinationLocation });
   }
 }

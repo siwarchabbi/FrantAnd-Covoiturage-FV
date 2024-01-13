@@ -1,43 +1,48 @@
 <div class="main-parent">
-    <div class="form-wrap">
-      <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
-        <h1><span>Tw</span>Sila</h1>
-        <div class="single-input">
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            name="email"
-            placeholder="Enter your email"
-            autofocus
-            required
-            [(ngModel)]="email"  
-          />
-        </div>
-  
-        <div class="single-input">
-          <input
-            type="password"
-            id="password"
-            name="password"
-            class="form-control"
-            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-            required
-            [(ngModel)]="password"  
-          />
-          <!-- Display password length error message in red block -->
-        </div>
-  
-        <div class="submit-button">
-          <button class="button btn btn-primary d-grid w-100" type="submit">Se connecter</button>
-        </div>
-        <div class="center-div">
-          <h5>OR</h5>
-        </div>
-        <div class="center-div">
-          <a routerLink="/registeruser"><span>Créer un compte</span></a>
-        </div>
-      </form>
-    </div>
+  <div class="form-wrap">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+      <h1><span>Tw</span>Sila</h1>
+      
+      <div class="single-input">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          autofocus
+          required
+          [(ngModel)]="email"  
+        />
+        <div class="validation-message" *ngIf="validateInput(loginForm.controls['email'], 'required')">Email is required.</div>
+        <div class="validation-message" *ngIf="validateInput(loginForm.controls['email'], 'pattern')">Invalid email format.</div>
+      </div>
+
+      <div class="single-input">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="form-control"
+          placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+          required
+          [(ngModel)]="password"  
+        />
+        <div class="validation-message" *ngIf="validateInput(loginForm.controls['password'], 'required')">Password is required.</div>
+        <div class="validation-message" *ngIf="validateInput(loginForm.controls['password'], 'minlength')">Password must be at least 6 characters long.</div>
+      </div>
+
+      <div class="submit-button">
+        <button class="button btn btn-primary d-grid w-100" type="submit">Se connecter</button>
+      </div>
+      
+      <div class="center-div">
+        <h5>OR</h5>
+      </div>
+      
+      <div class="center-div">
+        <a routerLink="/registeruser"><span>Créer un compte</span></a>
+      </div>
+    </form>
   </div>
-  
+</div>

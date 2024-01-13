@@ -50,7 +50,7 @@ updateCar() {
         text: 'Car updated successfully!',
       });
 
-      this.router.navigate(['/cars']); // Redirect to car list page
+      this.router.navigate(['/cars/list']);
     },
     (error) => {
       // Handle error

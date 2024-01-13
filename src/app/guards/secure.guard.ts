@@ -8,7 +8,7 @@ import { LoginService } from '../services/login.service';
 })
 export class SecureGuard implements CanActivate {
   constructor(public tokenStorageService: LoginService, public router: Router) {}
-  
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
@@ -20,5 +20,5 @@ export class SecureGuard implements CanActivate {
     return true;
     }
 
-  
+
 }

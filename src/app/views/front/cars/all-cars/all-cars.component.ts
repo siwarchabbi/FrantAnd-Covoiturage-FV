@@ -1,35 +1,59 @@
-import { Component, OnInit } from '@angular/core';
-import { CarService } from '../../cars/services/car.service';
-import { Car } from '../../cars/entity/car';
-import Swal from 'sweetalert2';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Car } from '../entity/car';
 import { Subscription } from 'rxjs';
+import { CarService } from '../services/car.service';
+import { take } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-all-cars',
+  templateUrl: './all-cars.component.html',
+  styleUrls: ['./all-cars.component.css']
 })
-export class HomeComponent implements OnInit {
-  userId: string | null = null;
+export class AllCarsComponent implements OnInit, OnDestroy {
+
   private cars: Car[] = [];
   filteredCars: Car[] = [];
   activeCar?: Car;
   subscription?: Subscription;
+  userId: string | null = null;
+  showMoreCars: boolean = false;
+  isButtonClicked = false;
+  favoritesSubject = new BehaviorSubject<string[]>([]);
+  favorites$ = this.favoritesSubject.asObservable();
 
-  constructor(private service: CarService ) { }
+  constructor(private service: CarService) { }
 
+  showMore() {
+    this.showMoreCars = true;
+  }
 
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
 
   ngOnInit(): void {
     this.fetchCars();
     this.userId = localStorage.getItem('id');
-
-
   }
-  addToFavorites(carId: string | undefined): void {
-    if (this.userId !== null) {
-      if (carId !== undefined) {
-        this.service.addCarToFavorites(this.userId, carId).subscribe(
+  addToFavorites(car: Car): void {
+    if (car.isButtonClicked) {
+      // Car is already added to favorites, do nothing
+      return;
+    }
+
+    if (this.userId !== null && car._id !== undefined) {
+      // Check if the car is already in favorites
+      const isAlreadyInFavorites = this.favoritesSubject.value.includes(car._id);
+
+      if (!isAlreadyInFavorites) {
+        // Perform the logic for adding to favorites
+        this.favoritesSubject.pipe(take(1)).subscribe(favorites => {
+          this.favoritesSubject.next([...favorites, car._id!]); // Use the non-null assertion operator (!)
+        });
+
+        this.service.addCarToFavorites(this.userId, car._id).subscribe(
           () => {
             console.log('Car added to favorites successfully.');
 
@@ -39,6 +63,8 @@ export class HomeComponent implements OnInit {
               text: 'Car added to favorites successfully!',
             });
 
+            // Set isButtonClicked to true to prevent multiple clicks
+            car.isButtonClicked = true;
           },
           (error) => {
             console.error('Error adding car to favorites:', error);
@@ -50,13 +76,12 @@ export class HomeComponent implements OnInit {
           }
         );
       } else {
-        console.error('Car ID is undefined. Unable to add car to favorites.');
+        console.log('Car is already in favorites.');
       }
     } else {
-      console.error('User ID is null. Unable to add car to favorites.');
+      console.error('User ID or Car ID is null or undefined. Unable to add car to favorites.');
     }
   }
-
 
   searchCars(searchData: { departure: string, destination: string }) {
     const { departure, destination } = searchData;
@@ -72,7 +97,6 @@ export class HomeComponent implements OnInit {
       );
     }
   }
-
 
   fetchCars() {
     this.subscription = this.service.getCars().subscribe(
@@ -90,5 +114,4 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-
 }

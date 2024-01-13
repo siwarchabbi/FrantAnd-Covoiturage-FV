@@ -38,6 +38,8 @@ export class ListCarsComponent implements OnInit, OnDestroy {
       text: 'You want to delete this car!',
       icon: 'warning',
       showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
       cancelButtonText: 'No, keep it'
     }).then((result) => {
