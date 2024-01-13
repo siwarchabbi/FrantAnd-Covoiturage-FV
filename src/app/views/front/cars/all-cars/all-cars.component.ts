@@ -85,18 +85,40 @@ export class AllCarsComponent implements OnInit, OnDestroy {
 
   searchCars(searchData: { departure: string, destination: string }) {
     const { departure, destination } = searchData;
-
+  
     if (!departure && !destination) {
-      // Both fields are empty, show all cars
-      this.filteredCars = [...this.cars];
+      // Both fields are empty, show alert asking for input
+      Swal.fire({
+        icon: 'info',
+        title: 'Info',
+        text: 'Please enter your search criteria before searching.',
+      });
     } else {
       // Perform filtering based on departure and destination
       this.filteredCars = this.cars.filter(
         car => car.departureLocation.toLowerCase().includes(departure.toLowerCase()) &&
           car.destinationLocation.toLowerCase().includes(destination.toLowerCase())
       );
+  
+      if (this.filteredCars.length > 0) {
+        // If there are filtered cars, display a success message
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Traject exists! Cars found for the specified route.',
+        });
+      } else {
+        // If no cars are found, display a warning message
+        Swal.fire({
+          icon: 'warning',
+          title: 'Warning',
+          text: 'No publications found for the specified route yet.',
+        });
+      }
     }
   }
+  
+  
 
   fetchCars() {
     this.subscription = this.service.getCars().subscribe(
